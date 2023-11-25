@@ -13,7 +13,7 @@ jobs:
       - uses: TG908/fork-sync@v1.6.3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          owner: ${{ github.repository_owner }} # 使用 github.repository_owner 上下文动态获取仓库所有者
+          owner: arkadiyt #
           head: main # fork 的上游仓库 branch
           base: main # 本地仓库 branch
 
