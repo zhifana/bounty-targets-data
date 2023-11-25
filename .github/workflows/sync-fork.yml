@@ -15,3 +15,19 @@ jobs:
           owner: arkadiyt # fork 的上游仓库 user
           head: main # fork 的上游仓库 branch
           base: main # 本地仓库 branch
+          
+      - name: 推送更改到 Fork
+        run: git push origin main
+
+      - name: 获取提交信息
+        id: get_commit_messages
+        run: |
+          COMMIT_MESSAGES=$(git log --pretty=format:"%h - %s" --reverse HEAD..HEAD@{1})
+          echo "::set-output name=commit_messages::$COMMIT_MESSAGES"
+
+      - name: 通知 Discord
+        if: success()
+        run: |
+          curl -X POST -H "Content-Type: application/json" \
+            -d '{"content":"Fork 同步完成！\n\n更新内容:\n'"${{ steps.get_commit_messages.outputs.commit_messages }}"'"}' \
+            ${{ secrets.DISCORD_WEBHOOK_URL }}
