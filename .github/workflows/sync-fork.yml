@@ -1,50 +1,51 @@
-name: Sync Fork with Upstream and Notify Discord
+# .github/workflows/sync.yml
+name: 同步 Fork 并通知 Discord
 
 on:
+  push:
   schedule:
-    - cron: '*/5 * * * *'  # 每五分钟执行一次
+    - cron: '*/5 * * * *'  # 每5分钟执行一次
 
 jobs:
-  sync-and-notify:
+  repo-sync:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v2
+      - name: 检出仓库
+        uses: actions/checkout@v2
 
-    - name: Set Git Identity
-      run: |
-        git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-        git config user.name "${GITHUB_ACTOR}"
+      - name: 设置 Git 身份
+        run: |
+          git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+          git config user.name "${GITHUB_ACTOR}"
 
-    - name: Add Upstream Remote
-      run: git remote add upstream https://github.com/arkadiyt/bounty-targets-data
+      - name: 添加上游远程
+        run: git remote add upstream https://github.com/arkadiyt/bounty-targets-data
 
-    - name: Fetch Upstream Changes
-      run: git fetch upstream
+      - name: 获取上游更改
+        run: git fetch upstream
 
-    - name: Merge Upstream Changes
-      run: |
-        git merge upstream/main --no-edit --strategy-option=theirs || exit 1
+      - name: 合并上游更改
+        run: |
+          git merge upstream/main --no-edit || exit 1
 
-        # 检查合并冲突
-        if [ -n "$(git diff --name-only --diff-filter=U)" ]; then
-          echo "Merge conflicts occurred. Please resolve manually."
-          exit 1
-        fi
+          # 检查合并冲突
+          if [ -n "$(git diff --name-only --diff-filter=U)" ]; then
+            echo "合并冲突已发生，请手动解决。"
+            exit 1
+          fi
 
-    - name: Push Changes to Fork
-      run: git push origin main
+      - name: 推送更改到 Fork
+        run: git push origin main
 
-    - name: Get Commit Messages
-      id: get_commit_messages
-      run: |
-        COMMIT_MESSAGES=$(git log --pretty=format:"%h - %s" --reverse HEAD..HEAD@{1})
-        echo "::set-output name=commit_messages::$COMMIT_MESSAGES"
+      - name: 获取提交信息
+        id: get_commit_messages
+        run: |
+          COMMIT_MESSAGES=$(git log --pretty=format:"%h - %s" --reverse HEAD..HEAD@{1})
+          echo "::set-output name=commit_messages::$COMMIT_MESSAGES"
 
-    - name: Notify Discord
-      if: success()
-      run: |
-        curl -X POST -H "Content-Type: application/json" \
-          -d '{"content":"Fork sync completed successfully!\n\nUpdates:\n'"${{ steps.get_commit_messages.outputs.commit_messages }}"'"}' \
-          ${{ secrets.DISCORD_WEBHOOK_URL }}
+      - name: 通知 Discord
+        if: success()
+        run: |
+          curl -X POST -H "Content-Type: application/json" \
+            -d '{"content":"Fork 同步完成！\n\n更新内容:\n'"${{ steps.get_commit_messages.outputs.commit_messages }}"'"}' \
+            ${{ secrets.DISCORD_WEBHOOK_URL }}
