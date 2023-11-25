@@ -16,17 +16,13 @@ jobs:
           head: main
           base: main
 
-      - name: Get latest changes
-        run: |
-          CHANGES=$(git log --pretty=format:"%h - %s (%an)" HEAD...origin/main)
-          echo "::set-output name=changes::$CHANGES"
-
       - name: Send Discord Notification
         if: success()
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          CHANGES=$({{ steps.get_changes.outputs.changes }})
+          COMMIT_URL=$(curl -s -H "Authorization: token $GITHUB_TOKEN" https://api.github.com/repos/arkadiyt/repo/compare/main...HEAD | jq -r .html_url)
           curl -X POST -H "Content-Type: application/json" \
-            -d '{"content":"Fork sync completed!\n\nChanges:\n\n'"$CHANGES"'"}' \
+            -d '{"content":"Fork sync completed!\n\nChanges:\n\n'"$COMMIT_URL"'"}' \
             $DISCORD_WEBHOOK_URL
