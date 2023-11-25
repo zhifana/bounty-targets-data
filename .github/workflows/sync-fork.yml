@@ -21,7 +21,7 @@ jobs:
         run: |
           git clone https://github.com/${{ github.repository }}.git
           cd $(basename $_ .git)
-          CHANGES=$(git --no-pager diff --stat HEAD^ HEAD)
+          CHANGES=$(git --no-pager diff HEAD^ HEAD)
           echo "::set-output name=changes::$CHANGES"
 
       - name: Send Discord Notification
