@@ -16,11 +16,17 @@ jobs:
           head: main
           base: main
 
+      - name: Get latest changes
+        run: |
+          CHANGES=$(git log --pretty=format:"%h - %s (%an)" HEAD...origin/main)
+          echo "::set-output name=changes::$CHANGES"
+
       - name: Send Discord Notification
         if: success()
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
         run: |
+          CHANGES=$({{ steps.get_changes.outputs.changes }})
           curl -X POST -H "Content-Type: application/json" \
-            -d '{"content":"Fork sync completed!"}' \
+            -d '{"content":"Fork sync completed!\n\nChanges:\n\n'"$CHANGES"'"}' \
             $DISCORD_WEBHOOK_URL
