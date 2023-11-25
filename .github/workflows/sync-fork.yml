@@ -19,7 +19,9 @@ jobs:
       - name: Get latest changes
         id: git_diff
         run: |
-          CHANGES=$(git clone https://github.com/${{ github.repository }}.git && cd $(basename $_ .git) && git --no-pager diff --name-only HEAD^ HEAD)
+          git clone https://github.com/${{ github.repository }}.git
+          cd $(basename $_ .git)
+          CHANGES=$(git --no-pager diff --stat HEAD^ HEAD)
           echo "::set-output name=changes::$CHANGES"
 
       - name: Send Discord Notification
