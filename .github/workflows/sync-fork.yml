@@ -9,21 +9,15 @@ jobs:
   repo-sync:
     runs-on: ubuntu-latest
     steps:
-      - uses: TG908/fork-sync@v1.6.3
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          owner: arkadiyt
-          head: main
-          base: main
+      - uses: actions/checkout@v2  # 明确地将仓库克隆到工作目录
 
-      - name: 切换到正确的目录
-        run: cd bounty-targets-data
-
-      - name: 获取提交信息并推送更改到Fork
-        if: success()
+      - name: 切换到正确的目录并执行同步操作
         run: |
-          COMMIT_MESSAGES=$(git log --pretty=format:"%h - %s" --reverse HEAD..HEAD@{1})
-          echo "::set-output name=commit_messages::$COMMIT_MESSAGES"
+          cd bounty-targets-data
+          git remote add upstream https://github.com/arkadiyt/bounty-targets-data.git
+          git fetch upstream
+          git checkout main
+          git merge upstream/main
           git push origin main
 
       - name: 向 Discord 发送通知
@@ -32,5 +26,5 @@ jobs:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
         run: |
           curl -X POST -H "Content-Type: application/json" \
-            -d '{"content":"Fork 同步完成！\n\n更新内容:\n'"${{ steps.get_commit_messages.outputs.commit_messages }}"'"}' \
+            -d '{"content":"Fork 同步完成！"}' \
             $DISCORD_WEBHOOK_URL
