@@ -3,29 +3,28 @@ name: Sync Fork
 on:
   push:
   schedule:
-    - cron: '*/5 * * * *'
+    - cron: '*/15 * * * *'
 
 jobs:
   repo-sync:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2  # 明确地将仓库克隆到工作目录
+      - uses: TG908/fork-sync@v1.6.3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          owner:  arkadiyt
+          head: main
+          base: main
 
-      - name: 同步Fork仓库
+      - name: Get Commit List
         run: |
-          mkdir bounty-targets-data
-          cd bounty-targets-data
-          git remote add upstream https://github.com/arkadiyt/bounty-targets-data.git
-          git fetch upstream
-          git checkout main
-          git merge upstream/main --allow-unrelated-histories
-          git push origin main
+          git log --no-merges --pretty=format:"%h - %an, %ar : %s" --since="24 hours" > commit_list.txt
 
-      - name: 向 Discord 发送通知
+      - name: Send Discord Notification
         if: success()
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
         run: |
           curl -X POST -H "Content-Type: application/json" \
-            -d '{"content":"Fork 同步完成！"}' \
+            -d '{"content":"Fork sync completed! Here are the latest commits:\n\n```'$(cat commit_list.txt)'```"}' \
             $DISCORD_WEBHOOK_URL
