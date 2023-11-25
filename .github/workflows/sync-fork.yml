@@ -12,14 +12,15 @@ jobs:
       - uses: TG908/fork-sync@v1.6.3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          owner:  arkadiyt
+          owner: arkadiyt
           head: main
           base: main
 
       - name: Get latest changes
         id: git_diff
         run: |
-          CHANGES=$(git --no-pager diff --name-only HEAD^ HEAD)
+          git fetch origin master:master
+          CHANGES=$(git --no-pager diff --name-only master)
           echo "::set-output name=changes::$CHANGES"
 
       - name: Send Discord Notification
