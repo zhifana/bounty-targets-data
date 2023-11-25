@@ -26,8 +26,9 @@ jobs:
         if: success()
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          CHANGES: ${{ steps.git_diff.outputs.changes }}
         run: |
-          CHANGES=$(echo "${{ steps.git_diff.outputs.changes }}")
+          CHANGES=$(echo "$CHANGES")
           curl -X POST -H "Content-Type: application/json" \
             -d '{"content":"Fork sync completed!\n\nChanges:\n\n'"$CHANGES"'"}' \
             $DISCORD_WEBHOOK_URL
