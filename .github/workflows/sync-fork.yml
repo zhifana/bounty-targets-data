@@ -19,8 +19,7 @@ jobs:
       - name: Get latest changes
         id: git_diff
         run: |
-          git fetch origin master:master
-          CHANGES=$(git --no-pager diff --name-only master)
+          CHANGES=$(git clone https://github.com/${{ github.repository }}.git && cd $(basename $_ .git) && git --no-pager diff --name-only HEAD^ HEAD)
           echo "::set-output name=changes::$CHANGES"
 
       - name: Send Discord Notification
