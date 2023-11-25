@@ -1,0 +1,50 @@
+name: Sync Fork with Upstream and Notify Discord
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'  # 每五分钟执行一次
+
+jobs:
+  sync-and-notify:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Set Git Identity
+      run: |
+        git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+        git config user.name "${GITHUB_ACTOR}"
+
+    - name: Add Upstream Remote
+      run: git remote add upstream https://github.com/arkadiyt/bounty-targets-data
+
+    - name: Fetch Upstream Changes
+      run: git fetch upstream
+
+    - name: Merge Upstream Changes
+      run: |
+        git merge upstream/main --no-edit || exit 1
+
+        # 检查合并冲突
+        if [ -n "$(git diff --name-only --diff-filter=U)" ]; then
+          echo "Merge conflicts occurred. Please resolve manually."
+          exit 1
+        fi
+
+    - name: Push Changes to Fork
+      run: git push origin main
+
+    - name: Get Commit Messages
+      id: get_commit_messages
+      run: |
+        COMMIT_MESSAGES=$(git log --pretty=format:"%h - %s" --reverse HEAD..HEAD@{1})
+        echo "::set-output name=commit_messages::$COMMIT_MESSAGES"
+
+    - name: Notify Discord
+      if: success()
+      run: |
+        curl -X POST -H "Content-Type: application/json" \
+          -d '{"content":"Fork sync completed successfully!\n\nUpdates:\n'"${{ steps.get_commit_messages.outputs.commit_messages }}"'"}' \
+          ${{ secrets.DISCORD_WEBHOOK_URL }}
