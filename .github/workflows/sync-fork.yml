@@ -1,37 +1,17 @@
 # .github/workflows/sync.yml
-
-name: 同步上游分支
+name: Sync Fork
 
 on:
+  push: # push 时触发, 主要是为了测试配置有没有问题
   schedule:
-    - cron: '*/5 * * * *'
-
+    - cron: '*/5 * * * *' # 每3小时触发, 对于一些更新不那么频繁的项目可以设置为每天一次, 低碳一点
 jobs:
-  sync:
+  repo-sync:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout 仓库
-        uses: actions/checkout@v2
-
-      - name: 配置 Git 用户信息
-        run: |
-          git config --global user.name '${{ github.actor }}'
-          git config --global user.email '${{ github.actor }}@users.noreply.github.com'
-
-      - name: 添加上游远程
-        run: git remote add upstream https://github.com/arkadiyt/bounty-targets-data.git
-
-      - name: 获取上游更改
-        run: git fetch upstream
-
-      - name: 合并上游分支到 feature/x
-        run: |
-          git checkout arkadiyt/bounty-targets-data
-          git merge --no-edit upstream/arkadiyt/bounty-targets-data
-          git push origin arkadiyt/bounty-targets-data
-
-      - name: 合并上游分支到 main
-        run: |
-          git checkout master
-          git merge --no-edit upstream/main
-          git push origin main
+      - uses: TG908/fork-sync@v1.6.3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          owner: arkadiyt # fork 的上游仓库 user
+          head: main # fork 的上游仓库 branch
+          base: main # 本地仓库 branch
