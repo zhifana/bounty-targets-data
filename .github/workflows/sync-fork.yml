@@ -16,21 +16,3 @@ jobs:
           head: main
           base: main
 
-      - name: Get latest changes
-        id: git_diff
-        run: |
-          git clone https://github.com/${{ github.repository }}.git
-          cd $(basename $_ .git)
-          CHANGES=$(git --no-pager diff HEAD^ HEAD)
-          echo "$CHANGES" > changes.txt
-          echo "::set-output name=changes::$(cat changes.txt)"
-
-      - name: Send Discord Notification
-        if: success()
-        env:
-          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
-          CHANGES: ${{ steps.git_diff.outputs.changes }}
-        run: |
-          curl -X POST -H "Content-Type: application/json" \
-            -d '{"content":"Fork sync completed!\n\nChanges:\n\n'"$CHANGES"'"}' \
-            $DISCORD_WEBHOOK_URL
