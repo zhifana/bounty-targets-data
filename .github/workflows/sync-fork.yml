@@ -11,14 +11,14 @@ jobs:
     steps:
       - uses: actions/checkout@v2  # 明确地将仓库克隆到工作目录
 
-      - name: 切换到正确的目录并执行同步操作
+      - name: 同步Fork仓库
         run: |
           mkdir bounty-targets-data
           cd bounty-targets-data
           git remote add upstream https://github.com/arkadiyt/bounty-targets-data.git
           git fetch upstream
           git checkout main
-          git merge upstream/main
+          git merge upstream/main --allow-unrelated-histories
           git push origin main
 
       - name: 向 Discord 发送通知
