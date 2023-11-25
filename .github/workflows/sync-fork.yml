@@ -16,13 +16,18 @@ jobs:
           head: main
           base: main
 
+      - name: Get latest changes
+        id: git_diff
+        run: |
+          CHANGES=$(git --no-pager diff --name-only HEAD^ HEAD)
+          echo "::set-output name=changes::$CHANGES"
+
       - name: Send Discord Notification
         if: success()
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          COMMIT_URL=$(jq -r .compare $GITHUB_EVENT_PATH)
+          CHANGES=$(echo "${{ steps.git_diff.outputs.changes }}")
           curl -X POST -H "Content-Type: application/json" \
-            -d '{"content":"Fork sync completed!\n\nChanges:\n\n'"$COMMIT_URL"'"}' \
+            -d '{"content":"Fork sync completed!\n\nChanges:\n\n'"$CHANGES"'"}' \
             $DISCORD_WEBHOOK_URL
