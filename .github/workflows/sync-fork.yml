@@ -13,6 +13,7 @@ jobs:
 
       - name: 切换到正确的目录并执行同步操作
         run: |
+          mkdir bounty-targets-data
           cd bounty-targets-data
           git remote add upstream https://github.com/arkadiyt/bounty-targets-data.git
           git fetch upstream
