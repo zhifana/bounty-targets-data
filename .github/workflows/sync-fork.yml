@@ -16,6 +16,9 @@ jobs:
           head: main
           base: main
 
+      - name: 切换到正确的目录
+        run: cd bounty-targets-data
+
       - name: 获取提交信息并推送更改到Fork
         if: success()
         run: |
