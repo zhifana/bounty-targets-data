@@ -1,33 +1,37 @@
-# .github/workflows/example.yml
+# .github/workflows/sync.yml
 
-name: Merge upstream branches
+name: 同步上游分支
 
 on:
   schedule:
     - cron: '*/5 * * * *'
 
 jobs:
-  merge:
+  sync:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout 仓库
         uses: actions/checkout@v2
 
-      - name: Set Git Config
+      - name: 配置 Git 用户信息
         run: |
           git config --global user.name '${{ github.actor }}'
           git config --global user.email '${{ github.actor }}@users.noreply.github.com'
 
-      - name: Merge upstream
+      - name: 添加上游远程
+        run: git remote add upstream https://github.com/arkadiyt/bounty-targets-data.git
+
+      - name: 获取上游更改
+        run: git fetch upstream
+
+      - name: 合并上游分支到 feature/x
         run: |
-          git pull --unshallow
-          git remote add upstream https://github.com/arkadiyt/bounty-targets-data.git
-          git fetch upstream
+          git checkout arkadiyt/bounty-targets-data
+          git merge --no-edit upstream/arkadiyt/bounty-targets-data
+          git push origin arkadiyt/bounty-targets-data
 
-          branches_to_merge=("feature/x" "master")
-
-          for branch in "${branches_to_merge[@]}"; do
-            git checkout -b $branch origin/$branch
-            git merge --no-edit upstream/$branch
-            git push origin $branch
-          done
+      - name: 合并上游分支到 main
+        run: |
+          git checkout master
+          git merge --no-edit upstream/main
+          git push origin main
