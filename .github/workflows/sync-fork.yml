@@ -16,15 +16,11 @@ jobs:
           head: main
           base: main
 
-      - name: Get Commit List
-        run: |
-          git log --no-merges --pretty=format:"%h - %an, %ar : %s" --since="24 hours" > commit_list.txt
-
       - name: Send Discord Notification
         if: success()
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
         run: |
           curl -X POST -H "Content-Type: application/json" \
-            -d '{"content":"Fork sync completed! Here are the latest commits:\n\n```'$(cat commit_list.txt)'```"}' \
+            -d '{"content":"Fork sync completed!"}' \
             $DISCORD_WEBHOOK_URL
