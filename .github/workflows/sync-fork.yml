@@ -25,7 +25,7 @@ jobs:
 
     - name: Merge Upstream Changes
       run: |
-        git merge upstream/main --no-edit || exit 1
+        git merge upstream/main --no-edit --strategy-option=theirs || exit 1
 
         # 检查合并冲突
         if [ -n "$(git diff --name-only --diff-filter=U)" ]; then
