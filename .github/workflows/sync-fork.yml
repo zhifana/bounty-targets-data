@@ -22,7 +22,7 @@ jobs:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          COMMIT_URL=$(curl -s -H "Authorization: token $GITHUB_TOKEN" https://api.github.com/repos/arkadiyt/bounty-targets-data/compare/main...HEAD | jq -r .html_url)
+          COMMIT_URL=$(curl -s -H "Authorization: token $GITHUB_TOKEN" https://api.github.com/repos/zhifana/bounty-targets-data/compare/main...HEAD | jq -r .html_url)
           curl -X POST -H "Content-Type: application/json" \
             -d '{"content":"Fork sync completed!\n\nChanges:\n\n'"$COMMIT_URL"'"}' \
             $DISCORD_WEBHOOK_URL
