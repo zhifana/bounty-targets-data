@@ -2626,6 +2626,7 @@ booking.*.cloud.sqills.com
 booking.*.sqills.com
 *.tempo-team.*
 *.tempo-team.de
+*.na.ko.com
 *.aroundtheworld.tomorrowland.com
 *.tomorrowland.com
 *.trouw.nl
@@ -2690,6 +2691,7 @@ matrix.agent.*.tchap.gouv.fr
 swiss-backup*.infomaniak.com
 *.vod2.infomaniak.com
 *.lazada-seller.cn
+*.okto.tech
 *.app.spacelift.dev
 *.telenor.se
 *.bredbandsbolaget.se
