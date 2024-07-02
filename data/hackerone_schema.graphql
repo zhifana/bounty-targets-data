@@ -878,6 +878,48 @@ type ActivitiesCveIdAdded implements ActivityInterface & Node & ReportActivityIn
 }
 
 """
+An Activities::DecisionReviewRejected activity for a report
+"""
+type ActivitiesDecisionReviewRejected implements ActivityInterface & Node & ReportActivityInterface {
+  _id: ID!
+  actor: ActorUnion
+  actor_is_customer: Boolean!
+  attachments: [Attachment]
+  automated_response: Boolean
+  created_at: DateTime!
+  genius_execution_id: ID @deprecated(reason: "This is about to be replaced by .genius_execution")
+  i_can_edit: Boolean!
+  i_can_flag: Boolean!
+  id: ID!
+  internal: Boolean
+  message: String
+  report: Report
+  triage_inbox_item: TriageInboxItem
+  updated_at: DateTime!
+}
+
+"""
+An Activities::DecisionReviewRequested activity for a report
+"""
+type ActivitiesDecisionReviewRequested implements ActivityInterface & Node & ReportActivityInterface {
+  _id: ID!
+  actor: ActorUnion
+  actor_is_customer: Boolean!
+  attachments: [Attachment]
+  automated_response: Boolean
+  created_at: DateTime!
+  genius_execution_id: ID @deprecated(reason: "This is about to be replaced by .genius_execution")
+  i_can_edit: Boolean!
+  i_can_flag: Boolean!
+  id: ID!
+  internal: Boolean
+  message: String
+  report: Report
+  triage_inbox_item: TriageInboxItem
+  updated_at: DateTime!
+}
+
+"""
 A Activities::DraftStarted activity for a report
 """
 type ActivitiesDraftStarted implements ActivityInterface & Node & ReportActivityInterface {
@@ -1716,6 +1758,28 @@ type ActivitiesReportOrganizationInboxesUpdated implements ActivityInterface & N
 }
 
 """
+A Activities::ReportQualityEvaluated activity for a report
+"""
+type ActivitiesReportQualityEvaluated implements ActivityInterface & Node & ReportActivityInterface {
+  _id: ID!
+  actor: ActorUnion
+  actor_is_customer: Boolean!
+  attachments: [Attachment]
+  automated_response: Boolean
+  created_at: DateTime!
+  genius_execution_id: ID @deprecated(reason: "This is about to be replaced by .genius_execution")
+  i_can_edit: Boolean!
+  i_can_flag: Boolean!
+  id: ID!
+  internal: Boolean
+  message: String
+  report: Report
+  reputation_change: Int
+  triage_inbox_item: TriageInboxItem
+  updated_at: DateTime!
+}
+
+"""
 An Activities::ReportRemediationGuidanceUpdated activity for a report
 """
 type ActivitiesReportRemediationGuidanceUpdated implements ActivityInterface & Node & ReportActivityInterface {
@@ -1872,6 +1936,27 @@ type ActivitiesReportTriageSummaryCreated implements ActivityInterface & Node & 
 A Activities::ReportUndisclosed activity for a report
 """
 type ActivitiesReportUndisclosed implements ActivityInterface & Node & ReportActivityInterface {
+  _id: ID!
+  actor: ActorUnion
+  actor_is_customer: Boolean!
+  attachments: [Attachment]
+  automated_response: Boolean
+  created_at: DateTime!
+  genius_execution_id: ID @deprecated(reason: "This is about to be replaced by .genius_execution")
+  i_can_edit: Boolean!
+  i_can_flag: Boolean!
+  id: ID!
+  internal: Boolean
+  message: String
+  report: Report
+  triage_inbox_item: TriageInboxItem
+  updated_at: DateTime!
+}
+
+"""
+A Activities::ReportVulnerabilityInformationUpdated activity for a report
+"""
+type ActivitiesReportVulnerabilityInformationUpdated implements ActivityInterface & Node & ReportActivityInterface {
   _id: ID!
   actor: ActorUnion
   actor_is_customer: Boolean!
@@ -2270,6 +2355,8 @@ enum ActivityTypes {
   Comment
   CommentsClosed
   CveIdAdded
+  DecisionReviewRejected
+  DecisionReviewRequested
   DraftStarted
   ExternalAdvisoryAdded
   ExternalUserInvitationCancelled
@@ -2307,6 +2394,7 @@ enum ActivityTypes {
   ReportSeverityUpdated
   ReportTitleUpdated
   ReportUndisclosed
+  ReportVulnerabilityInformationUpdated
   ReportVulnerabilityTypesUpdated
   RetestUserExpired
   ScopeGuidanceRequested
@@ -2328,7 +2416,7 @@ enum ActivityTypes {
 """
 Activities can be of multiple types
 """
-union ActivityUnion = ActivitiesAddedToPentest | ActivitiesAgreedOnGoingPublic | ActivitiesAssetCreated | ActivitiesAssetSubmissionRejected | ActivitiesBountyAwarded | ActivitiesBountyCancelled | ActivitiesBountyRecalled | ActivitiesBountyScheduled | ActivitiesBountySuggested | ActivitiesBugCloned | ActivitiesBugDuplicate | ActivitiesBugFiled | ActivitiesBugInactive | ActivitiesBugInformative | ActivitiesBugNeedsMoreInfo | ActivitiesBugNew | ActivitiesBugNotApplicable | ActivitiesBugPendingProgramReview | ActivitiesBugPriorityChanged | ActivitiesBugReopened | ActivitiesBugResolved | ActivitiesBugRetesting | ActivitiesBugSpam | ActivitiesBugTriaged | ActivitiesBulkAssetsConfirmed | ActivitiesCancelledDisclosureRequest | ActivitiesChangedCampaign | ActivitiesChangedScope | ActivitiesCodeReviewFeedbackPosted | ActivitiesCodeReviewRequested | ActivitiesComment | ActivitiesCommentsClosed | ActivitiesCveIdAdded | ActivitiesDraftStarted | ActivitiesExternalAdvisoryAdded | ActivitiesExternalUserInvitationCancelled | ActivitiesExternalUserInvited | ActivitiesExternalUserJoined | ActivitiesExternalUserRemoved | ActivitiesGroupAssignedToBug | ActivitiesHackerRequestedMediation | ActivitiesInvitationReceived | ActivitiesManuallyDisclosed | ActivitiesMediationRequested | ActivitiesNmiReminderComment | ActivitiesNobodyAssignedToBug | ActivitiesNotEligibleForBounty | ActivitiesOrganizationAssetsBulkArchived | ActivitiesOrganizationAssetsBulkCreated | ActivitiesPentestAwardAmountLeadUpdated | ActivitiesPentestAwardAmountUpdated | ActivitiesPentestCheckAssigned | ActivitiesPentestCheckCompleted | ActivitiesPentestCheckUnassigned | ActivitiesPentestCheckUpdated | ActivitiesPentestPublished | ActivitiesPentestStarted | ActivitiesPentesterAwarded | ActivitiesPentesterPositionOpened | ActivitiesProgramGatewayStateChanged | ActivitiesProgramGatewayUsersStateChanged | ActivitiesProgramHackerJoined | ActivitiesProgramHackerLeft | ActivitiesProgramInactive | ActivitiesProgramStructuredScopesBulkUpdated | ActivitiesReassignedToTeam | ActivitiesReferenceIdAdded | ActivitiesRemovedFromPentest | ActivitiesReportBecamePublic | ActivitiesReportCollaboratorInvited | ActivitiesReportCollaboratorJoined | ActivitiesReportCustomFieldValueUpdated | ActivitiesReportOrganizationInboxesUpdated | ActivitiesReportRemediationGuidanceUpdated | ActivitiesReportRetestApproved | ActivitiesReportRetestCanceled | ActivitiesReportRetestRejected | ActivitiesReportSeverityUpdated | ActivitiesReportTitleUpdated | ActivitiesReportTriageSummaryCreated | ActivitiesReportUndisclosed | ActivitiesReportVulnerabilityTypesUpdated | ActivitiesRetestUserExpired | ActivitiesScopeGuidanceRequested | ActivitiesScopeGuidanceSet | ActivitiesSwagAwarded | ActivitiesTeamBountyTableUpdated | ActivitiesTeamPolicyUpdated | ActivitiesTeamPostCreated | ActivitiesTeamPublished | ActivitiesTeamStructuredScopeUpdated | ActivitiesTeamSubmissionStateChanged | ActivitiesUserAssignedToBug | ActivitiesUserBannedFromProgram | ActivitiesUserCompletedRetest | ActivitiesUserJoined | ActivitiesUserLeftRetest
+union ActivityUnion = ActivitiesAddedToPentest | ActivitiesAgreedOnGoingPublic | ActivitiesAssetCreated | ActivitiesAssetSubmissionRejected | ActivitiesBountyAwarded | ActivitiesBountyCancelled | ActivitiesBountyRecalled | ActivitiesBountyScheduled | ActivitiesBountySuggested | ActivitiesBugCloned | ActivitiesBugDuplicate | ActivitiesBugFiled | ActivitiesBugInactive | ActivitiesBugInformative | ActivitiesBugNeedsMoreInfo | ActivitiesBugNew | ActivitiesBugNotApplicable | ActivitiesBugPendingProgramReview | ActivitiesBugPriorityChanged | ActivitiesBugReopened | ActivitiesBugResolved | ActivitiesBugRetesting | ActivitiesBugSpam | ActivitiesBugTriaged | ActivitiesBulkAssetsConfirmed | ActivitiesCancelledDisclosureRequest | ActivitiesChangedCampaign | ActivitiesChangedScope | ActivitiesCodeReviewFeedbackPosted | ActivitiesCodeReviewRequested | ActivitiesComment | ActivitiesCommentsClosed | ActivitiesCveIdAdded | ActivitiesDecisionReviewRejected | ActivitiesDecisionReviewRequested | ActivitiesDraftStarted | ActivitiesExternalAdvisoryAdded | ActivitiesExternalUserInvitationCancelled | ActivitiesExternalUserInvited | ActivitiesExternalUserJoined | ActivitiesExternalUserRemoved | ActivitiesGroupAssignedToBug | ActivitiesHackerRequestedMediation | ActivitiesInvitationReceived | ActivitiesManuallyDisclosed | ActivitiesMediationRequested | ActivitiesNmiReminderComment | ActivitiesNobodyAssignedToBug | ActivitiesNotEligibleForBounty | ActivitiesOrganizationAssetsBulkArchived | ActivitiesOrganizationAssetsBulkCreated | ActivitiesPentestAwardAmountLeadUpdated | ActivitiesPentestAwardAmountUpdated | ActivitiesPentestCheckAssigned | ActivitiesPentestCheckCompleted | ActivitiesPentestCheckUnassigned | ActivitiesPentestCheckUpdated | ActivitiesPentestPublished | ActivitiesPentestStarted | ActivitiesPentesterAwarded | ActivitiesPentesterPositionOpened | ActivitiesProgramGatewayStateChanged | ActivitiesProgramGatewayUsersStateChanged | ActivitiesProgramHackerJoined | ActivitiesProgramHackerLeft | ActivitiesProgramInactive | ActivitiesProgramStructuredScopesBulkUpdated | ActivitiesReassignedToTeam | ActivitiesReferenceIdAdded | ActivitiesRemovedFromPentest | ActivitiesReportBecamePublic | ActivitiesReportCollaboratorInvited | ActivitiesReportCollaboratorJoined | ActivitiesReportCustomFieldValueUpdated | ActivitiesReportOrganizationInboxesUpdated | ActivitiesReportQualityEvaluated | ActivitiesReportRemediationGuidanceUpdated | ActivitiesReportRetestApproved | ActivitiesReportRetestCanceled | ActivitiesReportRetestRejected | ActivitiesReportSeverityUpdated | ActivitiesReportTitleUpdated | ActivitiesReportTriageSummaryCreated | ActivitiesReportUndisclosed | ActivitiesReportVulnerabilityInformationUpdated | ActivitiesReportVulnerabilityTypesUpdated | ActivitiesRetestUserExpired | ActivitiesScopeGuidanceRequested | ActivitiesScopeGuidanceSet | ActivitiesSwagAwarded | ActivitiesTeamBountyTableUpdated | ActivitiesTeamPolicyUpdated | ActivitiesTeamPostCreated | ActivitiesTeamPublished | ActivitiesTeamStructuredScopeUpdated | ActivitiesTeamSubmissionStateChanged | ActivitiesUserAssignedToBug | ActivitiesUserBannedFromProgram | ActivitiesUserCompletedRetest | ActivitiesUserJoined | ActivitiesUserLeftRetest
 
 """
 An edge in a connection.
@@ -2662,8 +2750,10 @@ type AllTimeReputationLeaderboardEntry implements LeaderboardEntryInterface & No
 
 input AnalyticsChartAxisConfigInputType {
   color: String
+  darkModeColor: String
   format: String
   label: String
+  lightModeColor: String
   query_key: String!
   select_field: String!
   type: String
@@ -2674,6 +2764,7 @@ input AnalyticsChartConfigInputType {
   chart_orientation: String
   data_axes: [AnalyticsChartAxisConfigInputType!]!
   description: String
+  disable_table_view_toggle_button: Boolean
   index_axis: AnalyticsChartAxisConfigInputType!
   interval_override: String
   key: String!
@@ -2682,6 +2773,7 @@ input AnalyticsChartConfigInputType {
   new_until: String
   pivot_axis: AnalyticsChartAxisConfigInputType
   stacked: Boolean
+  subheader_override_text: String
   title: String
   type: String!
 }
@@ -2727,6 +2819,7 @@ enum AnalyticsFromEnum {
   dim_invitations
   dim_mediations
   dim_observed_assets
+  dim_organization_inboxes_reports
   dim_organizations
   dim_payments
   dim_report_retests
@@ -2746,7 +2839,6 @@ enum AnalyticsFromEnum {
   fixture_severity_ratings
   gateway_httpstream
   platform_benchmarks
-  view_intervals
 }
 
 input AnalyticsFunctionInputType {
@@ -2774,6 +2866,14 @@ input AnalyticsHavingPredicateInputType {
   function: AnalyticsPredicateFunctionEnum!
   left: AnalyticsSelectInputType!
   right: AnalyticsComplexInputType!
+}
+
+enum AnalyticsIntervalEnum {
+  day
+  month
+  quarter
+  week
+  year
 }
 
 input AnalyticsJoinInputType {
@@ -2810,13 +2910,16 @@ enum AnalyticsPredicateFunctionEnum {
 }
 
 input AnalyticsQueryInputType {
+  end_at: DateTime!
   from: AnalyticsFromEnum!
   having: AnalyticsHavingInputType
+  interval: AnalyticsIntervalEnum!
   join: [AnalyticsJoinInputType!]
   limit: Int
   offset: Int
   order_by: [AnalyticsOrderByInputType!]
   select: [AnalyticsSelectInputType!]!
+  start_at: DateTime!
   uid: String
   variables: [AnalyticsQueryVariableInputType!]
   where: AnalyticsWhereInputType
@@ -2956,6 +3059,17 @@ enum AnalyticsSelectFieldEnum {
   dim_observed_assets__report_state
   dim_observed_assets__team_handle
   dim_observed_assets__team_id
+  dim_organization_inboxes_reports__created_at
+  dim_organization_inboxes_reports__created_at_day
+  dim_organization_inboxes_reports__created_at_month
+  dim_organization_inboxes_reports__created_at_num_days_since
+  dim_organization_inboxes_reports__created_at_quarter
+  dim_organization_inboxes_reports__created_at_week
+  dim_organization_inboxes_reports__created_at_year
+  dim_organization_inboxes_reports__organization_id
+  dim_organization_inboxes_reports__organization_inbox_id
+  dim_organization_inboxes_reports__report_id
+  dim_organization_inboxes_reports__updated_at
   dim_organizations__handle
   dim_organizations__name
   dim_organizations__organization_id
@@ -3268,9 +3382,6 @@ enum AnalyticsSelectFieldEnum {
   platform_benchmarks__key
   platform_benchmarks__start_at
   platform_benchmarks__value
-  view_intervals__end_at
-  view_intervals__interval
-  view_intervals__start_at
 }
 
 enum AnalyticsSelectFunctionEnum {
@@ -4109,6 +4220,20 @@ enum AssetTagClauseTypeEnum {
 }
 
 """
+Entry for the asset type leaderboard
+"""
+type AssetTypesLeaderboardEntry implements LeaderboardEntryInterface & Node {
+  _id: ID!
+  id: ID!
+  impact: Float
+  previous_rank: Int
+  rank: Int
+  reputation: Int!
+  signal: Float
+  user: User!
+}
+
+"""
 Autogenerated input type of AssignCredential
 """
 input AssignCredentialInput {
@@ -4198,6 +4323,20 @@ type AssignPentestCheckPentestersPayload implements MutationResult {
   ): ErrorConnection!
   pentest_check: PentestCheck
   was_successful: Boolean!
+}
+
+"""
+Types of records which can be used to assign a report
+"""
+enum AssigneeEnum {
+  group
+  nobody
+  user
+}
+
+input AssigneeInputType {
+  id: Int!
+  type: AssigneeEnum!
 }
 
 """
@@ -4367,6 +4506,146 @@ type AutomatedRemediationGuidanceEdge {
 }
 
 """
+An automation that belongs to an organization
+"""
+type Automation implements Node {
+  """
+  The primary key from the database
+  """
+  _id: ID!
+
+  """
+  The configuration of the automation
+  """
+  config: String
+
+  """
+  The date and time the automation was created
+  """
+  created_at: DateTime!
+
+  """
+  Whether the automation is enabled
+  """
+  enabled: Boolean!
+
+  """
+  The events that trigger the automation
+  """
+  events: [String!]
+  id: ID!
+
+  """
+  The ARN of the Lambda function
+  """
+  lambda_arn: String
+
+  """
+  The title of the automation
+  """
+  title: String!
+
+  """
+  The type of trigger
+  """
+  trigger_type: String
+
+  """
+  The date and time the automation was last updated
+  """
+  updated_at: DateTime!
+}
+
+"""
+The connection type for Automation.
+"""
+type AutomationConnection {
+  """
+  A list of edges.
+  """
+  edges: [AutomationEdge]
+
+  """
+  A list of nodes.
+  """
+  nodes: [Automation]
+
+  """
+  Information to aid in pagination.
+  """
+  pageInfo: PageInfo!
+  total_count: Int
+}
+
+"""
+An edge in a connection.
+"""
+type AutomationEdge {
+  """
+  A cursor for use in pagination.
+  """
+  cursor: String!
+
+  """
+  The item at the end of the edge.
+  """
+  node: Automation
+}
+
+"""
+A template for an automation
+"""
+type AutomationTemplate implements Node {
+  _id: ID!
+  arn: String
+  footer: String
+  from: String
+  handler: String
+  header: String
+  id: ID!
+  name: String
+  optional_events: [String!]!
+  required_events: [String!]!
+  to: String
+}
+
+"""
+The connection type for AutomationTemplate.
+"""
+type AutomationTemplateConnection {
+  """
+  A list of edges.
+  """
+  edges: [AutomationTemplateEdge]
+
+  """
+  A list of nodes.
+  """
+  nodes: [AutomationTemplate]
+
+  """
+  Information to aid in pagination.
+  """
+  pageInfo: PageInfo!
+  total_count: Int
+}
+
+"""
+An edge in a connection.
+"""
+type AutomationTemplateEdge {
+  """
+  A cursor for use in pagination.
+  """
+  cursor: String!
+
+  """
+  The item at the end of the edge.
+  """
+  node: AutomationTemplate
+}
+
+"""
 Autogenerated input type of AutosavePentestOpportunity
 """
 input AutosavePentestOpportunityInput {
@@ -4375,6 +4654,7 @@ input AutosavePentestOpportunityInput {
   authentication_mode: String
   auto_provision: Boolean
   citizenship_restrictions: [String!]
+  clear_restriction_reasoning: String
 
   """
   A unique identifier for the client performing the mutation.
@@ -4386,9 +4666,12 @@ input AutosavePentestOpportunityInput {
   consumption_subscription_id: ID
   customer_email: String
   customer_note: String
+  desired_outcomes: [String!]
+  intent: String
   internal_handoff_notes: String
   location_restrictions: [String!]
   name: String
+  owner_name: String
   package_name: String
   requested_start_date: String
   salesforce_account: String
@@ -4399,6 +4682,7 @@ input AutosavePentestOpportunityInput {
   schedule_time_restrictions_start: String
   scopes: String
   skill_ids: [ID!]
+  specific_concerns: String
   state: String
   time_zone: String
   token: String!
@@ -4465,6 +4749,7 @@ enum BackgroundCheckStatus {
   processing
   renewal_eligible
   success
+  vouched
 }
 
 """
@@ -4533,31 +4818,21 @@ BBP launch configuration for a team
 type BbpLaunchConfiguration implements Node {
   attachment: Attachment
   current_configuration_step: String
-  has_changed_brand_promise: Boolean!
   has_changed_custom_section: Boolean!
   has_changed_disclosure_policies: Boolean!
-  has_changed_faq: Boolean!
-  has_changed_legal: Boolean!
   has_changed_out_of_scope: Boolean!
-  has_changed_program_eligibility: Boolean!
   has_changed_program_rules: Boolean!
-  has_changed_rewards: Boolean!
-  has_changed_safe_harbor: Boolean!
+  has_changed_test_plan: Boolean!
   id: ID!
   invoice_opt_in: Boolean!
   launch_at: DateTime
   launch_requested_at: DateTime
-  policy_brand_promise: String
   policy_custom_section_content: String
   policy_custom_section_name: String
   policy_disclosure_policies: String
-  policy_faq: String
-  policy_legal: String
   policy_out_of_scope: String
-  policy_program_eligibility: String
   policy_program_rules: String
-  policy_rewards: String
-  policy_safe_harbor: String
+  policy_test_plan: String
   suggested_critical: Int
   suggested_high: Int
   suggested_low: Int
@@ -5513,6 +5788,7 @@ type Campaign implements Node {
     last: Int
   ): UserConnection
   end_date: DateTime
+  extended_at: DateTime
   high: Float
   id: ID!
   low: Float
@@ -5998,15 +6274,30 @@ type CertificationsPentesterProfileEdge {
   node: CertificationsPentesterProfile
 }
 
+input ChallengeDemoInputType {
+  use_case: ChallengeDemoUseCase!
+}
+
+"""
+Different use-cases to demo for challenges
+"""
+enum ChallengeDemoUseCase {
+  ai_red_teaming
+  generic
+}
+
 """
 Challenge setting of a Team
 """
 type ChallengeSetting implements Node {
+  aasm_state: String
   has_retesting_phase: Boolean
   id: ID!
   not_started: Boolean
   policy: String
+  starts_at: DateTime
   stops_at: DateTime
+  target_budget: Int
 }
 
 """
@@ -6808,20 +7099,6 @@ type CompleteTutorialPayload implements MutationResult {
 }
 
 """
-A connected repository for CSA pentest
-"""
-type ConnectedRepository implements Node {
-  _id: ID!
-  default_branch: String
-  description: String
-  id: ID!
-  name: String
-  needs_review: Boolean!
-  sha: String
-  url: String!
-}
-
-"""
 A consumption subscription
 """
 type ConsumptionSubscription implements Node {
@@ -7375,6 +7652,55 @@ Autogenerated return type of CreateAsset.
 """
 type CreateAssetPayload implements MutationResult {
   asset: Asset
+
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+  errors(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+    types: [ErrorTypeEnum]
+  ): ErrorConnection!
+  was_successful: Boolean!
+}
+
+"""
+Autogenerated input type of CreateAutomation
+"""
+input CreateAutomationInput {
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+  code: String!
+  events: [String!]
+  organization_handle: String!
+  title: String!
+}
+
+"""
+Autogenerated return type of CreateAutomation.
+"""
+type CreateAutomationPayload implements MutationResult {
+  automation: Automation!
 
   """
   A unique identifier for the client performing the mutation.
@@ -8176,6 +8502,8 @@ type CreateCvss3Point1SeverityPayload implements MutationResult {
 Autogenerated input type of CreateDemo
 """
 input CreateDemoInput {
+  challenge_engagement: ChallengeDemoInputType
+
   """
   A unique identifier for the client performing the mutation.
   """
@@ -8187,7 +8515,6 @@ input CreateDemoInput {
   with_benchmarking_feature: Boolean
   with_bounty_engagement: Boolean
   with_campaigns_feature: Boolean
-  with_custom_inboxes_feature: Boolean
   with_engagements_analytics_feature: Boolean
   with_gateway_feature: Boolean
   with_h1_assets_enterprise_product: Boolean
@@ -8594,51 +8921,6 @@ type CreateHackerTriageRatingPayload implements MutationResult {
 }
 
 """
-Autogenerated input type of CreateIncident
-"""
-input CreateIncidentInput {
-  """
-  A unique identifier for the client performing the mutation.
-  """
-  clientMutationId: String
-  message: String!
-}
-
-"""
-Autogenerated return type of CreateIncident.
-"""
-type CreateIncidentPayload implements MutationResult {
-  """
-  A unique identifier for the client performing the mutation.
-  """
-  clientMutationId: String
-  errors(
-    """
-    Returns the elements in the list that come after the specified cursor.
-    """
-    after: String
-
-    """
-    Returns the elements in the list that come before the specified cursor.
-    """
-    before: String
-
-    """
-    Returns the first _n_ elements from the list.
-    """
-    first: Int
-
-    """
-    Returns the last _n_ elements from the list.
-    """
-    last: Int
-    types: [ErrorTypeEnum]
-  ): ErrorConnection!
-  me: User
-  was_successful: Boolean!
-}
-
-"""
 Autogenerated input type of CreateIssueTrackerReferenceId
 """
 input CreateIssueTrackerReferenceIdInput {
@@ -8870,6 +9152,55 @@ type CreateLeaveProgramSurveyAnswerPayload implements MutationResult {
     types: [ErrorTypeEnum]
   ): ErrorConnection!
   me: User
+  was_successful: Boolean!
+}
+
+"""
+Autogenerated input type of CreateLlmApp
+"""
+input CreateLlmAppInput {
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+  color: String!
+  description: String!
+  instructions: String!
+  name: String!
+  placeholder: String!
+}
+
+"""
+Autogenerated return type of CreateLlmApp.
+"""
+type CreateLlmAppPayload implements MutationResult {
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+  errors(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+    types: [ErrorTypeEnum]
+  ): ErrorConnection!
+  llm_app: LlmApp
   was_successful: Boolean!
 }
 
@@ -9142,6 +9473,7 @@ input CreateOrUpdatePentestInput {
   """
   clientMutationId: String
   description: String!
+  enable_final_detailed_report: Boolean
   end_date: String!
   hour_cap: Int!
   id: ID
@@ -9794,54 +10126,6 @@ type CreateOrganizationSolutionInstancePayload implements MutationResult {
 }
 
 """
-Autogenerated input type of CreateOrganizationUser
-"""
-input CreateOrganizationUserInput {
-  """
-  A unique identifier for the client performing the mutation.
-  """
-  clientMutationId: String
-  email_address: String!
-  organization_id: ID!
-  team_ids: [Int!]!
-  team_member_group_ids: [Int!]
-}
-
-"""
-Autogenerated return type of CreateOrganizationUser.
-"""
-type CreateOrganizationUserPayload implements MutationResult {
-  """
-  A unique identifier for the client performing the mutation.
-  """
-  clientMutationId: String
-  errors(
-    """
-    Returns the elements in the list that come after the specified cursor.
-    """
-    after: String
-
-    """
-    Returns the elements in the list that come before the specified cursor.
-    """
-    before: String
-
-    """
-    Returns the first _n_ elements from the list.
-    """
-    first: Int
-
-    """
-    Returns the last _n_ elements from the list.
-    """
-    last: Int
-    types: [ErrorTypeEnum]
-  ): ErrorConnection!
-  organization: Organization
-  was_successful: Boolean!
-}
-
-"""
 Autogenerated input type of CreatePaypalPreference
 """
 input CreatePaypalPreferenceInput {
@@ -10128,6 +10412,98 @@ type CreateProgramSatisfactionSurveyAnswerPayload implements MutationResult {
     types: [ErrorTypeEnum]
   ): ErrorConnection!
   me: User
+  was_successful: Boolean!
+}
+
+"""
+Autogenerated input type of CreateReconContext
+"""
+input CreateReconContextInput {
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+  description: String
+  name: String!
+}
+
+"""
+Autogenerated return type of CreateReconContext.
+"""
+type CreateReconContextPayload implements MutationResult {
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+  errors(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+    types: [ErrorTypeEnum]
+  ): ErrorConnection!
+  recon_context: ReconCenterContext
+  was_successful: Boolean!
+}
+
+"""
+Autogenerated input type of CreateReconDocument
+"""
+input CreateReconDocumentInput {
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+  files: [Upload!]!
+  recon_context_id: Int!
+}
+
+"""
+Autogenerated return type of CreateReconDocument.
+"""
+type CreateReconDocumentPayload implements MutationResult {
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+  errors(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+    types: [ErrorTypeEnum]
+  ): ErrorConnection!
+  recon_context: ReconCenterContext
   was_successful: Boolean!
 }
 
@@ -10793,56 +11169,6 @@ type CreateTaxFormPayload implements MutationResult {
     types: [ErrorTypeEnum]
   ): ErrorConnection!
   me: User
-  was_successful: Boolean!
-}
-
-"""
-Autogenerated input type of CreateTeamMemberInvitation
-"""
-input CreateTeamMemberInvitationInput {
-  """
-  A unique identifier for the client performing the mutation.
-  """
-  clientMutationId: String
-  email_address: String
-  silent: Boolean!
-  team_id: Int!
-  team_member_group_ids: [Int!]
-  username: String
-}
-
-"""
-Autogenerated return type of CreateTeamMemberInvitation.
-"""
-type CreateTeamMemberInvitationPayload implements MutationResult {
-  """
-  A unique identifier for the client performing the mutation.
-  """
-  clientMutationId: String
-  errors(
-    """
-    Returns the elements in the list that come after the specified cursor.
-    """
-    after: String
-
-    """
-    Returns the elements in the list that come before the specified cursor.
-    """
-    before: String
-
-    """
-    Returns the first _n_ elements from the list.
-    """
-    first: Int
-
-    """
-    Returns the last _n_ elements from the list.
-    """
-    last: Int
-    types: [ErrorTypeEnum]
-  ): ErrorConnection!
-  invitation: InvitationsTeamMember
-  team: Team
   was_successful: Boolean!
 }
 
@@ -12455,12 +12781,16 @@ type DeclarativePolicy implements Node {
   """
   _id: ID!
   complies_with_standard_ineligible_findings: Boolean
+  contact_email: String
   created_at: DateTime!
   has_open_scope: Boolean
   id: ID!
   introduction: String
   pays_within_one_month: Boolean
+  platform_standards_exclusions: [PlatformStandardsExclusionsEnum!]
   protected_by_gold_standard_safe_harbor: Boolean
+  scope_exclusions: [ScopeExclusion!]
+  standard_ineligible_findings_exclusions: [StandardIneligibleFindingsExclusionsEnum!]
   updated_at: DateTime
 }
 
@@ -12506,6 +12836,51 @@ type DeleteAgileAcceleratorIntegrationPayload implements MutationResult {
     types: [ErrorTypeEnum]
   ): ErrorConnection!
   team: Team
+  was_successful: Boolean!
+}
+
+"""
+Autogenerated input type of DeleteAllAttachments
+"""
+input DeleteAllAttachmentsInput {
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+  report_id: ID!
+}
+
+"""
+Autogenerated return type of DeleteAllAttachments.
+"""
+type DeleteAllAttachmentsPayload implements MutationResult {
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+  errors(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+    types: [ErrorTypeEnum]
+  ): ErrorConnection!
+  report: Report
   was_successful: Boolean!
 }
 
@@ -13190,6 +13565,95 @@ type DeletePhabricatorIntegrationPayload implements MutationResult {
 }
 
 """
+Autogenerated input type of DeleteReconContext
+"""
+input DeleteReconContextInput {
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+  recon_context_id: Int!
+}
+
+"""
+Autogenerated return type of DeleteReconContext.
+"""
+type DeleteReconContextPayload implements MutationResult {
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+  errors(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+    types: [ErrorTypeEnum]
+  ): ErrorConnection!
+  was_successful: Boolean!
+}
+
+"""
+Autogenerated input type of DeleteReconDocument
+"""
+input DeleteReconDocumentInput {
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+  recon_document_id: Int!
+}
+
+"""
+Autogenerated return type of DeleteReconDocument.
+"""
+type DeleteReconDocumentPayload implements MutationResult {
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+  errors(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+    types: [ErrorTypeEnum]
+  ): ErrorConnection!
+  recon_context: ReconCenterContext
+  was_successful: Boolean!
+}
+
+"""
 Autogenerated input type of DeleteSlackPipeline
 """
 input DeleteSlackPipelineInput {
@@ -13690,7 +14154,7 @@ type DerivedPentest implements Node {
   hours: Int
   i_can_delete: Boolean
   id: ID!
-  is_code_review: Boolean
+  is_csa: Boolean
   is_team_member: Boolean
   name: String
   origin_id: ID!
@@ -16626,6 +17090,7 @@ input FiltersLlmAppFilterInput {
   _not: FiltersLlmAppFilterInput
   _or: [FiltersLlmAppFilterInput]
   id: IntPredicateInput
+  owner: String
 }
 
 input FiltersLlmAppFilterOrder {
@@ -16699,6 +17164,7 @@ input FiltersOrganizationInboxFilterInput {
   id: IntPredicateInput
   inbox_type: OrganizationInboxTypeEnumInputPredicateInput
   name: StringPredicateInput
+  organization: FiltersOrganizationFilterInput
   organization_member_groups: FiltersOrganizationMemberGroupFilterInput
   team: FiltersTeamFilterInput
 }
@@ -16806,6 +17272,11 @@ input FiltersPentesterPositionFilterInput {
   pentest_lead_abilities: BooleanPredicateInput
   pentests: FiltersPentestFilterInput
   state: StringPredicateInput
+}
+
+input FiltersPentesterPositionFilterOrder {
+  id: FilterOrderPredicateInput
+  starts_at: FilterOrderPredicateInput
 }
 
 input FiltersPentesterProfileFilterInput {
@@ -16920,7 +17391,6 @@ enum FiltersReportRetestFilterRoles {
   is_report_report_collaborator
   is_report_reporter
   is_report_someone_visiting_a_public_report
-  is_report_team_member
   is_retester
 }
 
@@ -17004,8 +17474,10 @@ input FiltersSkillFilterInput {
   _not: FiltersSkillFilterInput
   _or: [FiltersSkillFilterInput]
   approved: BooleanPredicateInput
+  database_id: IntPredicateInput
   id: IntPredicateInput
   name: StringPredicateInput
+  recommended_skills_for_user: Boolean
 }
 
 input FiltersSpotCheckFilterInput {
@@ -17242,6 +17714,7 @@ input FiltersUserFilterInput {
   _or: [FiltersUserFilterInput]
   followers: FiltersFollowedUserFilterInput
   id: IntPredicateInput
+  is_disabled: Boolean
   is_hackerone_triager_or_owns_reports: Boolean
   is_me: Boolean
   name: StringPredicateInput
@@ -17602,51 +18075,6 @@ type HackerCommentClassification implements Node {
 }
 
 """
-Autogenerated input type of HackerCommentClassificationNotUseful
-"""
-input HackerCommentClassificationNotUsefulInput {
-  """
-  A unique identifier for the client performing the mutation.
-  """
-  clientMutationId: String
-  hacker_comment_classification_id: ID!
-}
-
-"""
-Autogenerated return type of HackerCommentClassificationNotUseful.
-"""
-type HackerCommentClassificationNotUsefulPayload implements MutationResult {
-  """
-  A unique identifier for the client performing the mutation.
-  """
-  clientMutationId: String
-  errors(
-    """
-    Returns the elements in the list that come after the specified cursor.
-    """
-    after: String
-
-    """
-    Returns the elements in the list that come before the specified cursor.
-    """
-    before: String
-
-    """
-    Returns the first _n_ elements from the list.
-    """
-    first: Int
-
-    """
-    Returns the last _n_ elements from the list.
-    """
-    last: Int
-    types: [ErrorTypeEnum]
-  ): ErrorConnection!
-  hacker_comment_classification: HackerCommentClassification!
-  was_successful: Boolean!
-}
-
-"""
 Autogenerated input type of HackerCommentClassificationPostComment
 """
 input HackerCommentClassificationPostCommentInput {
@@ -17689,6 +18117,52 @@ type HackerCommentClassificationPostCommentPayload implements MutationResult {
     types: [ErrorTypeEnum]
   ): ErrorConnection!
   hacker_comment_classification: HackerCommentClassification
+  was_successful: Boolean!
+}
+
+"""
+Autogenerated input type of HackerCommentClassificationSetUsefulness
+"""
+input HackerCommentClassificationSetUsefulnessInput {
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+  hacker_comment_classification_id: ID!
+  was_useful: Boolean
+}
+
+"""
+Autogenerated return type of HackerCommentClassificationSetUsefulness.
+"""
+type HackerCommentClassificationSetUsefulnessPayload implements MutationResult {
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+  errors(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+    types: [ErrorTypeEnum]
+  ): ErrorConnection!
+  hacker_comment_classification: HackerCommentClassification!
   was_successful: Boolean!
 }
 
@@ -18197,6 +18671,7 @@ enum IdVerificationStatus {
   processing
   renewal_eligible
   success
+  vouched
 }
 
 """
@@ -18472,6 +18947,7 @@ type IntegrationEventsConfiguration implements Node {
   report_undisclosed: Boolean!
   report_user_assigned: Boolean!
   report_user_completed_retest: Boolean!
+  user_notification_preference_option_types: UserNotificationPreferenceOptionEnum
 }
 
 input IntegrationEventsConfigurationInputType {
@@ -18533,17 +19009,17 @@ enum IntegrationEventsEnum {
   program_gateway_users_state_changed
 
   """
-  <strong>(Private programs only)</strong> When a hacker accepted an invitation to hack on the program.
+  (Private programs only) When a hacker accepted an invitation to hack on the program.
   """
   program_hacker_joined
 
   """
-  <strong>(Private programs only)</strong> When a hacker leaves the program.
+  (Private programs only) When a hacker leaves the program.
   """
   program_hacker_left
 
   """
-  When a program structured scopes bulk updated.
+  When a program's scope is updated.
   """
   program_structured_scopes_bulk_updated
 
@@ -18633,7 +19109,7 @@ enum IntegrationEventsEnum {
   report_not_eligible_for_bounty
 
   """
-  When a report is report organization inboxes updated.
+  When a report's custom inboxes are updated.
   """
   report_organization_inboxes_updated
 
@@ -18703,7 +19179,7 @@ enum IntegrationEventsEnum {
   report_title_changed
 
   """
-  When a report is report triage summary created.
+  When a report triage summary is created.
   """
   report_triage_summary_created
 
@@ -19428,6 +19904,7 @@ A language model resolver job
 """
 type LanguageModelResolverJob implements Node {
   _id: ID!
+  created_at: DateTime!
   id: ID!
   response: String
   state: String!
@@ -19614,7 +20091,7 @@ interface LeaderboardEntryInterface {
 The different types of leaderboards that exist. Type that is returned is based
 on the key that is passed, and is linked to LeaderboardKeyEnum
 """
-union LeaderboardEntryUnion = AllTimeReputationLeaderboardEntry | CtfPointsLeaderboardEntry | HacktivityUpvotesLeaderboardEntry | HighCritReputationLeaderboardEntry | HighestReputationByCountryLeaderboardEntry | HighestReputationLeaderboardEntry | OwaspTopTenLeaderboardEntry | UpAndComersLeaderboardEntry
+union LeaderboardEntryUnion = AllTimeReputationLeaderboardEntry | AssetTypesLeaderboardEntry | CtfPointsLeaderboardEntry | HacktivityUpvotesLeaderboardEntry | HighCritReputationLeaderboardEntry | HighestReputationByCountryLeaderboardEntry | HighestReputationLeaderboardEntry | OwaspTopTenLeaderboardEntry | UpAndComersLeaderboardEntry
 
 """
 An edge in a connection.
@@ -19636,6 +20113,7 @@ Types of leaderboards
 """
 enum LeaderboardKeyEnum {
   ALL_TIME_REPUTATION
+  ASSET_TYPES
   CTF_POINTS
   HACKTIVITY_UPVOTES
   HIGHEST_REPUTATION
@@ -19788,6 +20266,8 @@ type LinkReportPayload implements MutationResult {
 An LLM App
 """
 type LlmApp implements Node {
+  color: String
+  created_at: DateTime!
   description: String!
   id: ID!
   instructions: String!
@@ -20739,6 +21219,12 @@ type Mutation implements Node {
     """
     input: CreateAssetInput!
   ): CreateAssetPayload!
+  createAutomation(
+    """
+    Parameters for CreateAutomation
+    """
+    input: CreateAutomationInput!
+  ): CreateAutomationPayload!
   createBounty(
     """
     Parameters for CreateBounty
@@ -20871,12 +21357,6 @@ type Mutation implements Node {
     """
     input: CreateHackerTriageRatingInput!
   ): CreateHackerTriageRatingPayload!
-  createIncident(
-    """
-    Parameters for CreateIncident
-    """
-    input: CreateIncidentInput!
-  ): CreateIncidentPayload!
   createIssueTrackerReferenceId(
     """
     Parameters for CreateIssueTrackerReferenceId
@@ -20907,6 +21387,12 @@ type Mutation implements Node {
     """
     input: CreateLeaveProgramSurveyAnswerInput!
   ): CreateLeaveProgramSurveyAnswerPayload!
+  createLlmApp(
+    """
+    Parameters for CreateLlmApp
+    """
+    input: CreateLlmAppInput!
+  ): CreateLlmAppPayload!
   createMailingAddress(
     """
     Parameters for CreateMailingAddress
@@ -21015,12 +21501,6 @@ type Mutation implements Node {
     """
     input: CreateOrganizationSolutionInstanceInput!
   ): CreateOrganizationSolutionInstancePayload!
-  createOrganizationUser(
-    """
-    Parameters for CreateOrganizationUser
-    """
-    input: CreateOrganizationUserInput!
-  ): CreateOrganizationUserPayload!
   createPaypalPreference(
     """
     Parameters for CreatePaypalPreference
@@ -21057,6 +21537,18 @@ type Mutation implements Node {
     """
     input: CreateProgramSatisfactionSurveyAnswerInput!
   ): CreateProgramSatisfactionSurveyAnswerPayload!
+  createReconContext(
+    """
+    Parameters for CreateReconContext
+    """
+    input: CreateReconContextInput!
+  ): CreateReconContextPayload!
+  createReconDocument(
+    """
+    Parameters for CreateReconDocument
+    """
+    input: CreateReconDocumentInput!
+  ): CreateReconDocumentPayload!
   createRejectionSurveyAnswer(
     """
     Parameters for CreateRejectionSurveyAnswer
@@ -21129,12 +21621,6 @@ type Mutation implements Node {
     """
     input: CreateTaxFormInput!
   ): CreateTaxFormPayload!
-  createTeamMemberInvitation(
-    """
-    Parameters for CreateTeamMemberInvitation
-    """
-    input: CreateTeamMemberInvitationInput!
-  ): CreateTeamMemberInvitationPayload!
   createTrayEscalation(
     """
     Parameters for CreateTrayEscalation
@@ -21219,6 +21705,12 @@ type Mutation implements Node {
     """
     input: DeleteAgileAcceleratorIntegrationInput!
   ): DeleteAgileAcceleratorIntegrationPayload!
+  deleteAllAttachments(
+    """
+    Parameters for DeleteAllAttachments
+    """
+    input: DeleteAllAttachmentsInput!
+  ): DeleteAllAttachmentsPayload!
   deleteAnalyticsReport(
     """
     Parameters for DeleteAnalyticsReport
@@ -21309,6 +21801,18 @@ type Mutation implements Node {
     """
     input: DeletePhabricatorIntegrationInput!
   ): DeletePhabricatorIntegrationPayload!
+  deleteReconContext(
+    """
+    Parameters for DeleteReconContext
+    """
+    input: DeleteReconContextInput!
+  ): DeleteReconContextPayload!
+  deleteReconDocument(
+    """
+    Parameters for DeleteReconDocument
+    """
+    input: DeleteReconDocumentInput!
+  ): DeleteReconDocumentPayload!
   deleteSlackPipeline(
     """
     Parameters for DeleteSlackPipeline
@@ -21597,18 +22101,18 @@ type Mutation implements Node {
     """
     input: GenerateTaxFormUrlInput!
   ): GenerateTaxFormUrlPayload!
-  hackerCommentClassificationNotUseful(
-    """
-    Parameters for HackerCommentClassificationNotUseful
-    """
-    input: HackerCommentClassificationNotUsefulInput!
-  ): HackerCommentClassificationNotUsefulPayload!
   hackerCommentClassificationPostComment(
     """
     Parameters for HackerCommentClassificationPostComment
     """
     input: HackerCommentClassificationPostCommentInput!
   ): HackerCommentClassificationPostCommentPayload!
+  hackerCommentClassificationSetUsefulness(
+    """
+    Parameters for HackerCommentClassificationSetUsefulness
+    """
+    input: HackerCommentClassificationSetUsefulnessInput!
+  ): HackerCommentClassificationSetUsefulnessPayload!
 
   """
   ID of the object.
@@ -22058,6 +22562,12 @@ type Mutation implements Node {
     """
     input: SignRulesOfEngagementInput!
   ): SignRulesOfEngagementPayload!
+  signupEntryLevelVdp(
+    """
+    Parameters for SignupEntryLevelVdp
+    """
+    input: SignupEntryLevelVdpInput!
+  ): SignupEntryLevelVdpPayload!
   startBackgroundCheck(
     """
     Parameters for StartBackgroundCheck
@@ -22178,6 +22688,12 @@ type Mutation implements Node {
     """
     input: ToggleArchivedCustomFieldAttributeInput!
   ): ToggleArchivedCustomFieldAttributePayload!
+  toggleBookmarkNotification(
+    """
+    Parameters for ToggleBookmarkNotification
+    """
+    input: ToggleBookmarkNotificationInput!
+  ): ToggleBookmarkNotificationPayload!
   toggleCollaborationWithNonWhitelistedHackers(
     """
     Parameters for ToggleCollaborationWithNonWhitelistedHackers
@@ -22190,6 +22706,12 @@ type Mutation implements Node {
     """
     input: ToggleFollowUserInput!
   ): ToggleFollowUserPayload!
+  toggleHai(
+    """
+    Parameters for ToggleHai
+    """
+    input: ToggleHaiInput!
+  ): ToggleHaiPayload!
   toggleOrganizationMemberAdmin(
     """
     Parameters for ToggleOrganizationMemberAdmin
@@ -22322,6 +22844,12 @@ type Mutation implements Node {
     """
     input: UpdateAutomaticInvitesInput!
   ): UpdateAutomaticInvitesPayload!
+  updateAutomationEnabled(
+    """
+    Parameters for UpdateAutomationEnabled
+    """
+    input: UpdateAutomationEnabledInput!
+  ): UpdateAutomationEnabledPayload!
   updateBbpLaunchConfigurationCurrentStep(
     """
     Parameters for UpdateBbpLaunchConfigurationCurrentStep
@@ -22376,6 +22904,12 @@ type Mutation implements Node {
     """
     input: UpdateCustomFieldAttributeInput!
   ): UpdateCustomFieldAttributePayload!
+  updateCustomInboxNotificationPreference(
+    """
+    Parameters for UpdateCustomInboxNotificationPreference
+    """
+    input: UpdateCustomInboxNotificationPreferenceInput!
+  ): UpdateCustomInboxNotificationPreferencePayload!
   updateCveIds(
     """
     Parameters for UpdateCveIds
@@ -22502,6 +23036,12 @@ type Mutation implements Node {
     """
     input: UpdateLastViewedNewFeaturesAtInput!
   ): UpdateLastViewedNewFeaturesAtPayload!
+  updateLlmApp(
+    """
+    Parameters for UpdateLlmApp
+    """
+    input: UpdateLlmAppInput!
+  ): UpdateLlmAppPayload!
   updateLlmConversationMessage(
     """
     Parameters for UpdateLlmConversationMessage
@@ -22538,6 +23078,12 @@ type Mutation implements Node {
     """
     input: UpdateOrganizationInboxInput!
   ): UpdateOrganizationInboxPayload!
+  updateOrganizationLockedSamlProvider(
+    """
+    Parameters for updateOrganizationLockedgSamlProvider
+    """
+    input: updateOrganizationLockedgSamlProviderInput!
+  ): updateOrganizationLockedgSamlProviderPayload!
   updateOrganizationMemberGroup(
     """
     Parameters for UpdateOrganizationMemberGroup
@@ -22550,12 +23096,6 @@ type Mutation implements Node {
     """
     input: UpdateOrganizationProfileInput!
   ): UpdateOrganizationProfilePayload!
-  updateOrganizationSamlProvider(
-    """
-    Parameters for UpdateOrganizationSamlProvider
-    """
-    input: UpdateOrganizationSamlProviderInput!
-  ): UpdateOrganizationSamlProviderPayload!
   updateOrganizationSamlProviderAlternativeCertificate(
     """
     Parameters for UpdateOrganizationSamlProviderAlternativeCertificate
@@ -22568,6 +23108,12 @@ type Mutation implements Node {
     """
     input: UpdateOrganizationSolutionInstanceInput!
   ): UpdateOrganizationSolutionInstancePayload!
+  updateOrganizationTestingSamlProvider(
+    """
+    Parameters for UpdateOrganizationTestingSamlProvider
+    """
+    input: UpdateOrganizationTestingSamlProviderInput!
+  ): UpdateOrganizationTestingSamlProviderPayload!
   updateOrganizationUser(
     """
     Parameters for UpdateOrganizationUser
@@ -22634,6 +23180,18 @@ type Mutation implements Node {
     """
     input: UpdateProgramPolicyInput!
   ): UpdateProgramPolicyPayload!
+  updateReconContext(
+    """
+    Parameters for UpdateReconContext
+    """
+    input: UpdateReconContextInput!
+  ): UpdateReconContextPayload!
+  updateReconDocument(
+    """
+    Parameters for UpdateReconDocument
+    """
+    input: UpdateReconDocumentInput!
+  ): UpdateReconDocumentPayload!
   updateRemediationGuidance(
     """
     Parameters for UpdateRemediationGuidance
@@ -23156,6 +23714,7 @@ input NewConversationInput {
   """
   clientMutationId: String
   context_object: LlmConversationContextInputType
+  llm_app_id: ID
 }
 
 """
@@ -23246,7 +23805,7 @@ interface NotificationDeliveryPreferenceInterface {
 """
 NotificationDeliveryPreferences can be of multiple types
 """
-union NotificationDeliveryPreferenceUnion = NotificationDeliveryPreferencesAward | NotificationDeliveryPreferencesDisclose | NotificationDeliveryPreferencesGatewayAccessUpdate | NotificationDeliveryPreferencesHackerComment | NotificationDeliveryPreferencesMention | NotificationDeliveryPreferencesNewSubmission | NotificationDeliveryPreferencesSubmissionConfirmation | NotificationDeliveryPreferencesSubmissionUpdate | NotificationDeliveryPreferencesTeamComment
+union NotificationDeliveryPreferenceUnion = NotificationDeliveryPreferencesAward | NotificationDeliveryPreferencesCampaignUpdates | NotificationDeliveryPreferencesDisclose | NotificationDeliveryPreferencesGatewayAccessUpdate | NotificationDeliveryPreferencesHackerComment | NotificationDeliveryPreferencesMention | NotificationDeliveryPreferencesNewSubmission | NotificationDeliveryPreferencesSubmissionConfirmation | NotificationDeliveryPreferencesSubmissionUpdate | NotificationDeliveryPreferencesTeamComment
 
 """
 An edge in a connection.
@@ -23267,6 +23826,17 @@ type NotificationDeliveryPreferenceUnionEdge {
 A NotificationDeliveryPreferences::Award preference for a user
 """
 type NotificationDeliveryPreferencesAward implements Node & NotificationDeliveryPreferenceInterface {
+  _id: ID!
+  created_at: DateTime!
+  delivery_preference: NotificationDeliveryPreferenceEnum!
+  id: ID!
+  updated_at: DateTime!
+}
+
+"""
+A NotificationDeliveryPreferences::CampaignUpdates preference for a user
+"""
+type NotificationDeliveryPreferencesCampaignUpdates implements Node & NotificationDeliveryPreferenceInterface {
   _id: ID!
   created_at: DateTime!
   delivery_preference: NotificationDeliveryPreferenceEnum!
@@ -23399,6 +23969,7 @@ interface NotificationPreferenceInterface {
   enabled: Boolean
   id: ID!
   updated_at: DateTime!
+  user_notification_preference_option_types: UserNotificationPreferenceOptionEnum
 }
 
 """
@@ -23407,6 +23978,7 @@ Possible types for NotificationPreference
 enum NotificationPreferenceTypes {
   All
   Assigned
+  CustomInbox
   Interact
   Mention
 }
@@ -23414,7 +23986,7 @@ enum NotificationPreferenceTypes {
 """
 NotificationPreferences can be of multiple types
 """
-union NotificationPreferenceUnion = NotificationPreferencesAll | NotificationPreferencesAssigned | NotificationPreferencesInteract | NotificationPreferencesMention
+union NotificationPreferenceUnion = NotificationPreferencesAll | NotificationPreferencesAssigned | NotificationPreferencesCustomInbox | NotificationPreferencesInteract | NotificationPreferencesMention
 
 """
 An edge in a connection.
@@ -23440,6 +24012,7 @@ type NotificationPreferencesAll implements Node & NotificationPreferenceInterfac
   enabled: Boolean
   id: ID!
   updated_at: DateTime!
+  user_notification_preference_option_types: UserNotificationPreferenceOptionEnum
 }
 
 """
@@ -23451,6 +24024,19 @@ type NotificationPreferencesAssigned implements Node & NotificationPreferenceInt
   enabled: Boolean
   id: ID!
   updated_at: DateTime!
+  user_notification_preference_option_types: UserNotificationPreferenceOptionEnum
+}
+
+"""
+A NotificationPreferences::CustomInbox preference for a user
+"""
+type NotificationPreferencesCustomInbox implements Node & NotificationPreferenceInterface {
+  _id: ID!
+  created_at: DateTime!
+  enabled: Boolean
+  id: ID!
+  updated_at: DateTime!
+  user_notification_preference_option_types: UserNotificationPreferenceOptionEnum
 }
 
 """
@@ -23462,6 +24048,7 @@ type NotificationPreferencesInteract implements Node & NotificationPreferenceInt
   enabled: Boolean
   id: ID!
   updated_at: DateTime!
+  user_notification_preference_option_types: UserNotificationPreferenceOptionEnum
 }
 
 """
@@ -23501,6 +24088,7 @@ type NotificationPreferencesMention implements Node & NotificationPreferenceInte
   enabled: Boolean
   id: ID!
   updated_at: DateTime!
+  user_notification_preference_option_types: UserNotificationPreferenceOptionEnum
 }
 
 """
@@ -23525,6 +24113,7 @@ input OpportunitiesFilterInput {
 
 input OpportunitiesQuery {
   multi_match: MultiMatchInput
+  query_string: QueryStringInput
 }
 
 type OpportunityDocument implements Node {
@@ -23807,11 +24396,32 @@ type Organization implements Node {
     last: Int
     secure_order_by: FiltersAuditLogItemFilterOrder
   ): AuditLogItemConnection
+  automations(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): AutomationConnection
   available_custom_inboxes_count: Int
   bug_bounty_team_count: Int
   campaigns_team_count: Int
   challenge_team_count: Int
-  code_review_team_count: Int
+  code_audit_team_count: Int
   consumption_subscriptions: [ConsumptionSubscription!]
   created_at: DateTime
   credit_worthy: Boolean!
@@ -23891,7 +24501,9 @@ type Organization implements Node {
   gate_saml_opened: Boolean!
   h1_assets: Boolean
   h1_assets_enterprise: Boolean
+  hai_enabled: Boolean!
   handle: String!
+  has_gateway_teams: Boolean
   i_am_asset_inventory_manager: Boolean!
   i_am_organization_admin: Boolean!
   i_am_organization_member: Boolean!
@@ -23899,6 +24511,7 @@ type Organization implements Node {
   i_can_create_spot_checks: Boolean!
   i_can_manage_all_programs_scope: Boolean!
   i_can_manage_asset_submissions: Boolean!
+  i_can_manage_hai: Boolean!
   i_can_manage_legacy_feature_toggles: Boolean!
   i_can_manage_organization_admins: Boolean!
   i_can_manage_organization_api_tokens: Boolean!
@@ -24143,6 +24756,43 @@ type Organization implements Node {
     page: Int = null
     where: FiltersUserFilterInput
   ): UserConnection
+  reports(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+    approaching_sla_violation: [SlaTypeEnum!]
+    assignee: AssigneeInputType = null
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+    database_id: Int = null
+    filter: ReportFilterInput
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+    handle: String
+    has_assignee: Boolean
+    has_retests: Boolean
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+    not_approaching_any_sla_violation: Boolean
+    offset: Int
+    order_by: ReportOrderInput = {direction: DESC, field: id}
+    pre_submission_review_states: [ReportPreSubmissionReviewStateEnum] = null
+    secure_order_by: FiltersReportFilterOrder
+    state: ReportStateEnum
+    substate: ReportStateEnum
+    violates_minimum_sla: [SlaTypeEnum!]
+    where: FiltersReportFilterInput
+  ): ReportConnection
   response_team_count: Int
   saml_providers(
     """
@@ -24259,7 +24909,6 @@ type Organization implements Node {
     last: Int
     tags: [String!]
   ): StoredQueryConnection
-  supports_organization_member_groups: Boolean
   team_member_groups(
     """
     Returns the elements in the list that come after the specified cursor.
@@ -24447,6 +25096,27 @@ type OrganizationInbox implements Node {
     visible: Boolean
   ): InboxViewConnection
   name: String!
+  notification_preferences(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): NotificationPreferenceConnection
   organization: Organization!
   organization_member_groups(
     """
@@ -24468,8 +25138,6 @@ type OrganizationInbox implements Node {
     Returns the last _n_ elements from the list.
     """
     last: Int
-    order_by: FiltersOrganizationMemberGroupFilterOrder
-    where: FiltersOrganizationMemberGroupFilterInput
   ): OrganizationMemberGroupConnection
   profile_picture(size: ProfilePictureSizes!): String
   profile_picture_filename: String
@@ -24520,6 +25188,7 @@ type OrganizationInbox implements Node {
     Returns the elements in the list that come after the specified cursor.
     """
     after: String
+    assignee: AssigneeInputType = null
 
     """
     Returns the elements in the list that come before the specified cursor.
@@ -24533,12 +25202,14 @@ type OrganizationInbox implements Node {
     """
     first: Int
     handle: String
+    has_assignee: Boolean
     has_retests: Boolean
 
     """
     Returns the last _n_ elements from the list.
     """
     last: Int
+    offset: Int
     order_by: ReportOrderInput = {direction: DESC, field: id}
     pre_submission_review_states: [ReportPreSubmissionReviewStateEnum] = null
     secure_order_by: FiltersReportFilterOrder
@@ -24670,8 +25341,6 @@ type OrganizationMember implements Node & ResourceInterface {
     Returns the last _n_ elements from the list.
     """
     last: Int
-    order_by: FiltersOrganizationMemberGroupFilterOrder
-    where: FiltersOrganizationMemberGroupFilterInput
   ): OrganizationMemberGroupConnection
   updated_at: DateTime!
   url: URI!
@@ -24762,8 +25431,6 @@ type OrganizationMemberGroup implements Node & ResourceInterface {
     Returns the last _n_ elements from the list.
     """
     last: Int
-    order_by: FiltersOrganizationInboxFilterOrder
-    where: FiltersOrganizationInboxFilterInput
   ): OrganizationInboxConnection!
   organization_members(
     """
@@ -24785,8 +25452,6 @@ type OrganizationMemberGroup implements Node & ResourceInterface {
     Returns the last _n_ elements from the list.
     """
     last: Int
-    order_by: FiltersOrganizationMemberFilterOrder = {user: {username: {_direction: ASC}}}
-    where: FiltersOrganizationMemberFilterInput
   ): OrganizationMemberConnection!
   organization_permissions: [OrganizationPermissionsEnum!]!
   permissions: [OrganizationPermissionsEnum!]!
@@ -24999,6 +25664,7 @@ input PayAllDuplicateReportsInput {
   A unique identifier for the client performing the mutation.
   """
   clientMutationId: String
+  message: String
   report_amounts: [ReportAmountsInput!]!
 }
 
@@ -25043,6 +25709,7 @@ An object with payment transaction data
 type PaymentTransaction implements Node {
   activity_date: DateTime!
   activity_description: String
+  additional_info: String
   balance: Float!
   bounty_award: Float
   bounty_fee: Float
@@ -25290,6 +25957,8 @@ type Pentest implements Node {
     last: Int
   ): StructuredScopesConnection
   attachments: [Attachment]
+  available_qualified_lead_pentesters: Int!
+  available_qualified_supporting_pentesters: Int!
   award_amount: Int
   award_amount_lead: Int
   citizenship_restrictions: [String!]
@@ -25300,6 +25969,7 @@ type Pentest implements Node {
   counts_per_severity(structured_scope_ids: [Int!]): Hash
   counts_per_weakness(structured_scope_ids: [Int!]): Hash
   description: String
+  enable_final_detailed_report: Boolean
   end_date: Date
   ends_at: DateTime
   findings_per_asset: Hash
@@ -25320,6 +25990,7 @@ type Pentest implements Node {
   lead_pentester: Pentester
   linked_jira_reports_count: Int
   location_restrictions: [String!]
+  methodology_types: [String!]
   minimum_days_until_start: Int!
   most_common_weaknesses: Hash
   name: String
@@ -25539,6 +26210,7 @@ type Pentest implements Node {
     Returns the elements in the list that come after the specified cursor.
     """
     after: String
+    assignee: AssigneeInputType = null
 
     """
     Returns the elements in the list that come before the specified cursor.
@@ -25553,12 +26225,14 @@ type Pentest implements Node {
     """
     first: Int
     handle: String
+    has_assignee: Boolean
     has_retests: Boolean
 
     """
     Returns the last _n_ elements from the list.
     """
     last: Int
+    offset: Int
     order_by: ReportOrderInput = {direction: DESC, field: id}
     pre_submission_review_states: [ReportPreSubmissionReviewStateEnum] = null
     secure_order_by: FiltersReportFilterOrder
@@ -25603,7 +26277,6 @@ type Pentest implements Node {
   started: Boolean
   starts_at: DateTime
   state: PentestStateEnum
-  structured_scope_types: [String!]
   summary_form_state: PentestSummaryFormStateEnum
   summary_report_delivery_date: DateTime
   summary_reports_downloadable: Boolean!
@@ -25654,6 +26327,8 @@ type Pentest implements Node {
   tem: User
   time_zone: String
   time_zone_code: String
+  total_qualified_lead_pentesters: Int!
+  total_qualified_supporting_pentesters: Int!
   tpm: User
   triaged_resolved_reports(
     """
@@ -25871,6 +26546,7 @@ type PentestChecklist implements Node {
     Returns the elements in the list that come after the specified cursor.
     """
     after: String
+    assignee: AssigneeInputType = null
 
     """
     Returns the elements in the list that come before the specified cursor.
@@ -25885,12 +26561,14 @@ type PentestChecklist implements Node {
     """
     first: Int
     handle: String
+    has_assignee: Boolean
     has_retests: Boolean
 
     """
     Returns the last _n_ elements from the list.
     """
     last: Int
+    offset: Int
     order_by: ReportOrderInput = {direction: DESC, field: id}
     pre_submission_review_states: [ReportPreSubmissionReviewStateEnum] = null
     secure_order_by: FiltersReportFilterOrder
@@ -26070,6 +26748,7 @@ type PentestOpportunity implements Node {
   auto_provision: Boolean
   bundle_subscription_id: Int
   citizenship_restrictions: [String!]
+  clear_restriction_reasoning: String
   company_name: String
   compliance_framework: String
   compliance_framework_other: String
@@ -26097,6 +26776,7 @@ type PentestOpportunity implements Node {
   ): PentestOpportunityCsaScopeConnection
   customer_email: String
   customer_note: String
+  desired_outcomes: [String!]
   generic_scopes(
     """
     Returns the elements in the list that come after the specified cursor.
@@ -26125,6 +26805,7 @@ type PentestOpportunity implements Node {
   i_can_submit: Boolean!
   i_can_update: Boolean!
   id: ID!
+  intent: String
   internal_handoff_notes: String
   location_restrictions: [String!]
   mobile_app_scopes(
@@ -26171,6 +26852,7 @@ type PentestOpportunity implements Node {
     last: Int
   ): PentestOpportunityNetworkScopeConnection
   organization: Organization
+  owner_name: String
   package_name: String
   pentest_days: Int
   requested_start_date: DateTime
@@ -26204,6 +26886,7 @@ type PentestOpportunity implements Node {
     last: Int
   ): SkillConnection
   sold_at: DateTime
+  specific_concerns: String
   state: String!
   submitted_at: DateTime
   time_zone: String
@@ -26634,7 +27317,6 @@ Fields on which a collection of Pentests can be ordered
 """
 enum PentestOrderField {
   created_at
-  pentest_status_weight
   starts_at
 }
 
@@ -26821,6 +27503,7 @@ type PentestStructuredScope implements Node {
     Returns the elements in the list that come after the specified cursor.
     """
     after: String
+    assignee: AssigneeInputType = null
 
     """
     Returns the elements in the list that come before the specified cursor.
@@ -26835,12 +27518,14 @@ type PentestStructuredScope implements Node {
     """
     first: Int
     handle: String
+    has_assignee: Boolean
     has_retests: Boolean
 
     """
     Returns the last _n_ elements from the list.
     """
     last: Int
+    offset: Int
     order_by: ReportOrderInput = {direction: DESC, field: id}
     pre_submission_review_states: [ReportPreSubmissionReviewStateEnum] = null
     secure_order_by: FiltersReportFilterOrder
@@ -26901,27 +27586,6 @@ A pentest task
 """
 type PentestTask implements Node {
   _id: ID!
-  connected_repositories(
-    """
-    Returns the elements in the list that come after the specified cursor.
-    """
-    after: String
-
-    """
-    Returns the elements in the list that come before the specified cursor.
-    """
-    before: String
-
-    """
-    Returns the first _n_ elements from the list.
-    """
-    first: Int
-
-    """
-    Returns the last _n_ elements from the list.
-    """
-    last: Int
-  ): ConnectedRepository
   description: String
   group_key: String!
   id: ID!
@@ -27081,10 +27745,12 @@ type PentesterPosition implements Node {
   id: ID!
   industry: String!
   location_restrictions: [String!]!
+  methodology_types: [String!]
   name: String!
   pentest: Pentest
   pentest_lead_abilities: Boolean!
   positions_available: Int!
+  preferred_skills: [Int!]!
   profile_picture(size: ProfilePictureSizes!): String!
   retesting_ends_at: DateTime!
   schedule_day_restrictions: [String!]!
@@ -27095,7 +27761,6 @@ type PentesterPosition implements Node {
   start_date: Date!
   starts_at: DateTime!
   state: String!
-  structured_scope_types: [String!]
   team: Team
   team_size: Int!
   time_zone_code: String
@@ -27204,27 +27869,6 @@ type PentesterProfile implements Node {
   ): UserConnection
   preferred_times: [String!]
   residence: String
-  skills(
-    """
-    Returns the elements in the list that come after the specified cursor.
-    """
-    after: String
-
-    """
-    Returns the elements in the list that come before the specified cursor.
-    """
-    before: String
-
-    """
-    Returns the first _n_ elements from the list.
-    """
-    first: Int
-
-    """
-    Returns the last _n_ elements from the list.
-    """
-    last: Int
-  ): SkillConnection
   state: String
   time_zone: String
   tools: [String!]
@@ -27426,6 +28070,20 @@ type PingPageActivityPayload implements MutationResult {
   was_successful: Boolean!
 }
 
+enum PlatformStandardsExclusionsEnum {
+  BYPASS_RESOLVED_REPORT
+  CHAINED_VULNERABILITIES
+  IDOR
+  LEAKAGE_SENSITIVE_PII
+  LEAKED_CREDENTIALS
+  MULTIPLE_REPORTS_HIGHLIGHTING_SYSTEMIC_ISSUES
+  SELF_SIGN_UP_CVSS_PR
+  THIRD_PARTY_COMPONENTS_FOR_HACKERS
+  THIRD_PARTY_COMPONENTS_FOR_PROGRAMS_CONSUMING_THE_COMPONENT
+  USING_AVAILABILITY_METRIC_FOR_DATA
+  VULNERABLE_NETWORK_CONECTION_IN_CLIENT_APPLICATIONS
+}
+
 """
 An engagement policy setting
 """
@@ -27464,6 +28122,18 @@ type ProductEdition implements Node {
   saas_deal: Boolean!
   swag_enabled: Boolean!
   team_member_groups_enabled: Boolean!
+}
+
+type ProfileMetricsSnapshot implements Node {
+  average_bounty_per_severity_critical: Float
+  average_bounty_per_severity_high: Float
+  average_bounty_per_severity_low: Float
+  average_bounty_per_severity_medium: Float
+  id: ID!
+  report_count_per_severity_critical: Int
+  report_count_per_severity_high: Int
+  report_count_per_severity_low: Int
+  report_count_per_severity_medium: Int
 }
 
 """
@@ -27902,6 +28572,28 @@ type Query implements Node {
     querystring: String
     report_ids: [Int!]!
   ): TeamConnection
+  automation(lambda_arn: String!): Automation
+  automation_templates(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): AutomationTemplateConnection
   background_check: BackgroundCheck
   bank_transfer_reference: BankTransferReference
   campaign_objectives(
@@ -28376,6 +29068,7 @@ type Query implements Node {
     Returns the last _n_ elements from the list.
     """
     last: Int
+    order_by: FiltersPentesterPositionFilterOrder
     where: FiltersPentesterPositionFilterInput
   ): PentesterPositionConnection
   pentester_profiles(
@@ -28480,6 +29173,29 @@ type Query implements Node {
     last: Int
     year: Int
   ): RankedWeaknessByYearConnection
+  recon_context(id: Int): ReconCenterContext
+  recon_contexts(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+    id: String
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): ReconCenterContextConnection
   report(id: Int!): Report @deprecated(reason: "Query for a Report node at the root level is not recommended.")
   report_retest_user(activity_id: Int!): ReportRetestUser
   report_retests(
@@ -28487,6 +29203,7 @@ type Query implements Node {
     Returns the elements in the list that come after the specified cursor.
     """
     after: String
+    assignee: AssigneeInputType
 
     """
     Returns the elements in the list that come before the specified cursor.
@@ -28502,6 +29219,7 @@ type Query implements Node {
     Returns the last _n_ elements from the list.
     """
     last: Int
+    offset: Int
     order_by: FiltersReportRetestFilterOrder
     where: FiltersReportRetestFilterInput
   ): ReportRetestConnection
@@ -28531,6 +29249,7 @@ type Query implements Node {
     Returns the elements in the list that come after the specified cursor.
     """
     after: String
+    assignee: AssigneeInputType = null
 
     """
     Returns the elements in the list that come before the specified cursor.
@@ -28544,12 +29263,14 @@ type Query implements Node {
     """
     first: Int
     handle: String
+    has_assignee: Boolean
     has_retests: Boolean
 
     """
     Returns the last _n_ elements from the list.
     """
     last: Int
+    offset: Int
     order_by: ReportOrderInput = {direction: DESC, field: id}
     pre_submission_review_states: [ReportPreSubmissionReviewStateEnum] = null
     secure_order_by: FiltersReportFilterOrder
@@ -28760,6 +29481,7 @@ type Query implements Node {
     pod_name: String
     priority: TriageInboxItemPriorityEnum
     report_id: Int
+    report_severity_rating: Boolean
     report_substate: TriageInboxItemReportSubstateEnum
     report_title: String
     running_validation_timer: Boolean
@@ -28851,7 +29573,10 @@ input QueryInput {
 
 input QueryStringInput {
   _name: String
+  analyze_wildcard: Boolean
   default_field: String
+  fields: [String!]
+  minimum_should_match: Int
   query: String!
 }
 
@@ -29206,6 +29931,188 @@ type ReclaimReportRetestPayload implements MutationResult {
   report_retest: ReportRetest
   report_retest_user: ReportRetestUser
   was_successful: Boolean!
+}
+
+"""
+Recon center context
+"""
+type ReconCenterContext implements Node {
+  _id: ID!
+  collaborators: [User!]
+  created_at: DateTime
+  description: String
+  documents(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): ReconCenterDocumentsConnection
+  id: ID!
+  name: String
+  options: ReconCenterContextOptions
+  owner: User
+  related_object_id: String
+  related_object_type: String
+  target: Team
+  updated_at: DateTime
+}
+
+"""
+The connection type for ReconCenterContext.
+"""
+type ReconCenterContextConnection {
+  """
+  A list of edges.
+  """
+  edges: [ReconCenterContextEdge]
+
+  """
+  A list of nodes.
+  """
+  nodes: [ReconCenterContext]
+
+  """
+  Information to aid in pagination.
+  """
+  pageInfo: PageInfo!
+  total_count: Int!
+}
+
+"""
+An edge in a connection.
+"""
+type ReconCenterContextEdge {
+  """
+  A cursor for use in pagination.
+  """
+  cursor: String!
+
+  """
+  The item at the end of the edge.
+  """
+  node: ReconCenterContext
+}
+
+"""
+Recon center context options
+"""
+type ReconCenterContextOptions implements Node {
+  delete_enabled: Boolean
+  id: ID!
+}
+
+"""
+Recon center documents
+"""
+type ReconCenterDocument implements Node {
+  _id: ID!
+  byte_size: Int
+  content_type: String
+  contributed_by: User
+  created_at: DateTime!
+  description: String
+  id: ID!
+  information_type: ReconInformationTypeEnum
+  name: String
+  pinned: Boolean
+  state: String
+  tool_source: ReconToolEnum
+  url: String
+}
+
+"""
+An edge in a connection.
+"""
+type ReconCenterDocumentEdge {
+  """
+  A cursor for use in pagination.
+  """
+  cursor: String!
+
+  """
+  The item at the end of the edge.
+  """
+  node: ReconCenterDocument
+}
+
+"""
+The connection type for ReconCenterDocument.
+"""
+type ReconCenterDocumentsConnection {
+  """
+  A list of edges.
+  """
+  edges: [ReconCenterDocumentEdge]
+
+  """
+  A list of nodes.
+  """
+  nodes: [ReconCenterDocument]
+
+  """
+  Information to aid in pagination.
+  """
+  pageInfo: PageInfo!
+  total_count: Int!
+}
+
+"""
+Possible types of recon information
+"""
+enum ReconInformationTypeEnum {
+  compressed
+  configuration
+  document
+  image
+  intrusion_alerts
+  network_information
+  network_traffic_data
+  penetration_testing_results
+  source_code
+  unknown
+  video
+  vulnerability_scan_report
+  web_application_vulnerabilities
+  web_server_vulnerabilities
+  wireless_network_data
+}
+
+"""
+Recon tool types
+"""
+enum ReconToolEnum {
+  acunetix
+  aircrack_ng
+  aws_inspector
+  burp_suite
+  metasploit
+  nessus
+  nikto
+  nmap
+  nuclei
+  open_vas
+  owasp_zap
+  qualys
+  qualys_was
+  snort
+  unknown
+  wfuzz
+  wireshark
 }
 
 """
@@ -30514,6 +31421,7 @@ type Report implements ActivitiesInterface & Node & ResourceInterface {
   i_can_clone: Boolean
   i_can_comment: Boolean
   i_can_create_severity: Boolean
+  i_can_delete_attachments: Boolean
   i_can_hide_timeline: Boolean
   i_can_manage_collaborators: Boolean
   i_can_manage_reference: Boolean
@@ -30524,6 +31432,8 @@ type Report implements ActivitiesInterface & Node & ResourceInterface {
   i_can_update_custom_field_values: Boolean
   i_can_view_duplicate_suggestions: Boolean
   i_can_view_hacker_facing_custom_fields: Boolean
+  i_can_view_hai_remediation_guidance: Boolean
+  i_can_write_testimonial: Boolean!
   id: ID!
   impact: String
   is_external_bug: Boolean
@@ -32233,6 +33143,7 @@ input ReviewCompletePentestOpportunityInput {
   authentication_mode: String
   auto_provision: Boolean
   citizenship_restrictions: [String!]
+  clear_restriction_reasoning: String
 
   """
   A unique identifier for the client performing the mutation.
@@ -32244,9 +33155,12 @@ input ReviewCompletePentestOpportunityInput {
   consumption_subscription_id: ID
   customer_email: String
   customer_note: String
+  desired_outcomes: [String!]
+  intent: String
   internal_handoff_notes: String
   location_restrictions: [String!]
   name: String
+  owner_name: String
   package_name: String
   pentest_opportunity_id: ID!
   requested_start_date: String
@@ -32258,6 +33172,7 @@ input ReviewCompletePentestOpportunityInput {
   schedule_time_restrictions_start: String
   scopes: String
   skill_ids: [ID!]
+  specific_concerns: String
   time_zone: String
 }
 
@@ -32302,6 +33217,7 @@ input ReviewPentestOpportunityInput {
   attachment_ids: [ID]
   authentication_mode: String
   citizenship_restrictions: [String!]
+  clear_restriction_reasoning: String
 
   """
   A unique identifier for the client performing the mutation.
@@ -32313,9 +33229,12 @@ input ReviewPentestOpportunityInput {
   consumption_subscription_id: ID
   customer_email: String
   customer_note: String
+  desired_outcomes: [String!]
+  intent: String
   internal_handoff_notes: String
   location_restrictions: [String!]
   name: String
+  owner_name: String
   package_name: String
   pentest_opportunity_id: ID!
   requested_start_date: String
@@ -32327,6 +33246,7 @@ input ReviewPentestOpportunityInput {
   schedule_time_restrictions_start: String
   scopes: String
   skill_ids: [ID!]
+  specific_concerns: String
   time_zone: String
 }
 
@@ -33008,6 +33928,28 @@ type SaveUnverifiableResidencyVerificationPayload implements MutationResult {
 }
 
 """
+Scope Exclusion
+"""
+type ScopeExclusion implements Node {
+  """
+  The primary key from the database
+  """
+  _id: ID!
+  category: String
+  created_at: DateTime!
+  details: String
+  id: ID!
+  updated_at: DateTime
+}
+
+input ScopeExclusionInput {
+  category: String
+  delete: Boolean
+  details: String
+  id: ID
+}
+
+"""
 The connection type for DocumentUnion.
 """
 type SearchResultConnection {
@@ -33154,6 +34096,7 @@ type SetNoiseReasonPayload implements MutationResult {
 Autogenerated input type of SetupPentest
 """
 input SetupPentestInput {
+  asset_ids_to_add: [ID]
   citizenship_restrictions: [String]
 
   """
@@ -33163,6 +34106,7 @@ input SetupPentestInput {
   ends_at: String
   location_restrictions: [String]
   pentest_id: ID!
+  pentest_structured_scope_ids_to_remove: [ID]
   retesting_ends_at: String
   schedule_day_restrictions: [String]
   schedule_restrictions: String
@@ -33464,7 +34408,6 @@ input ShareReportViaEmailInput {
   """
   clientMutationId: String
   emails: [String!]!
-  message: String
   report_id: ID!
 }
 
@@ -33507,6 +34450,7 @@ input ShouldInput {
   exists: ExistsInput
   multi_match: MultiMatchInput
   nested: NestedInput
+  query_string: QueryStringInput
   range: RangeInput
   term: TermFilterInput
   terms: TermsFilterInput
@@ -33626,6 +34570,61 @@ type SignalEdge {
 type SignalRequirementsSetting implements Node {
   id: ID!
   target_signal: Float
+}
+
+"""
+Autogenerated input type of SignupEntryLevelVdp
+"""
+input SignupEntryLevelVdpInput {
+  access_code: String
+
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+  company_name: String!
+  email: String!
+  first_name: String!
+  last_name: String!
+  password: String!
+  password_confirmation: String!
+  title: String!
+  tos_accept: Boolean!
+  username: String!
+  website: String!
+}
+
+"""
+Autogenerated return type of SignupEntryLevelVdp.
+"""
+type SignupEntryLevelVdpPayload implements MutationResult {
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+  errors(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+    types: [ErrorTypeEnum]
+  ): ErrorConnection!
+  was_successful: Boolean!
 }
 
 """
@@ -34069,12 +35068,12 @@ type SpotCheck implements Node {
   spot_check_users(where: FiltersSpotCheckUserFilterInput): [SpotCheckUser!]!
   start_date: Date!
   state: SpotCheckTypeStates!
-  target_num_hackers: Int!
+  target_num_hackers: Int
   team: Team!
   template_content: String!
-  type_cohort: SpotCheckTypeCohorts!
-  users_pending: [SpotCheckUser!]!
-  users_reported: [SpotCheckUser!]!
+  type_cohort: SpotCheckTypeCohorts
+  users_pending: [SpotCheckUser!]
+  users_reported: [SpotCheckUser!]
 }
 
 """
@@ -34236,6 +35235,13 @@ input SpotCheckUserTypeStatesInputPredicateInput {
   _lt: SpotCheckUserTypeStatesInput
   _lte: SpotCheckUserTypeStatesInput
   _neq: SpotCheckUserTypeStatesInput
+}
+
+enum StandardIneligibleFindingsExclusionsEnum {
+  KNOWN_CVES
+  MISSING_BEST_PRACTICES
+  NO_REAL_SECURITY_IMPACT
+  NO_USER_INTERACTION
 }
 
 """
@@ -34486,10 +35492,12 @@ A static dashboard axis definition
 """
 type StaticDashboardAxis implements Node {
   color: String
+  darkModeColor: String
   format: StaticDashboardAxisFormatTypeEnum
   hide_when_empty: Boolean
   id: ID!
   label: String
+  lightModeColor: String
   query_key: String
   select_field: String
   tooltip: String
@@ -34515,6 +35523,7 @@ type StaticDashboardChart implements Node & ResourceInterface {
   chart_orientation: String
   data_axes: [StaticDashboardAxis!]
   description: String
+  disable_table_view_toggle_button: Boolean
   display_all_items_in_tooltip: Boolean
   display_total_of_all_items_in_tooltip: Boolean
   explores: [StaticDashboardExplore!]
@@ -34530,6 +35539,7 @@ type StaticDashboardChart implements Node & ResourceInterface {
   new_until: String
   pivot_axis: StaticDashboardAxis
   stacked: Boolean
+  subheader_override_text: String
   title: String!
   title_tooltip: String
   type: String!
@@ -34997,6 +36007,7 @@ type StructuredScope implements Node & ResourceInterface {
     Returns the elements in the list that come after the specified cursor.
     """
     after: String
+    assignee: AssigneeInputType = null
 
     """
     Returns the elements in the list that come before the specified cursor.
@@ -35011,12 +36022,14 @@ type StructuredScope implements Node & ResourceInterface {
     """
     first: Int
     handle: String
+    has_assignee: Boolean
     has_retests: Boolean
 
     """
     Returns the last _n_ elements from the list.
     """
     last: Int
+    offset: Int
     order_by: ReportOrderInput = {direction: DESC, field: id}
     pre_submission_review_states: [ReportPreSubmissionReviewStateEnum] = null
     secure_order_by: FiltersReportFilterOrder
@@ -35164,7 +36177,6 @@ enum StructuredScopeOrderField {
   archived_at
   asset_identifier
   created_at
-  id
 }
 
 """
@@ -35350,6 +36362,7 @@ input SubmitPentestOpportunityInput {
   attachment_ids: [ID]
   authentication_mode: String
   citizenship_restrictions: [String!]
+  clear_restriction_reasoning: String
 
   """
   A unique identifier for the client performing the mutation.
@@ -35360,8 +36373,11 @@ input SubmitPentestOpportunityInput {
   compliance_framework_other: String
   customer_email: String
   customer_note: String
+  desired_outcomes: [String!]
+  intent: String
   location_restrictions: [String!]
   name: String
+  owner_name: String
   requested_start_date: String
   schedule_day_restrictions: [String!]
   schedule_restrictions: String
@@ -35369,6 +36385,7 @@ input SubmitPentestOpportunityInput {
   schedule_time_restrictions_start: String
   scopes: String
   skill_ids: [ID!]
+  specific_concerns: String
   time_zone: String
   token: String!
 }
@@ -36427,10 +37444,6 @@ type Team implements ActivitiesInterface & Node & ResourceInterface {
   available_integrations(key: String = null): Hash!
   available_permissions: [String!]
   average_bounty_lower_amount: Int
-  average_bounty_per_severity_critical: Float
-  average_bounty_per_severity_high: Float
-  average_bounty_per_severity_low: Float
-  average_bounty_per_severity_medium: Float
   average_bounty_upper_amount: Int
   awards_miles: Boolean
   balance: Float
@@ -36667,6 +37680,7 @@ type Team implements ActivitiesInterface & Node & ResourceInterface {
   ): CveRequestsConnection
   cwe_field_hidden: Boolean!
   declarative_policy: DeclarativePolicy
+  declarative_programs_enabled: Boolean!
   domain_ownerships(
     """
     Returns the elements in the list that come after the specified cursor.
@@ -36809,7 +37823,7 @@ type Team implements ActivitiesInterface & Node & ResourceInterface {
   ): ForwardedEmailsConnection
   gateway_program: GatewayProgram
   goal_valid_reports: Int
-  gold_standard: Int
+  gold_standard: Boolean
   grace_period_remaining_in_days: Int
   hackerone_to_jira_events_configuration: HackeroneToJiraEventsConfiguration
   handle: String!
@@ -36837,7 +37851,6 @@ type Team implements ActivitiesInterface & Node & ResourceInterface {
   i_can_manage_gateway_v2: Boolean!
   i_can_manage_program: Boolean!
   i_can_manage_references: Boolean!
-  i_can_manage_system_users: Boolean!
   i_can_manage_team_members: Boolean!
   i_can_see_report_submit_button: Boolean
   i_can_view_all_weaknesses: Boolean
@@ -36852,6 +37865,7 @@ type Team implements ActivitiesInterface & Node & ResourceInterface {
   i_can_view_jira_webhook: Boolean
   i_can_view_pentests: Boolean!
   i_can_view_phabricator_integration: Boolean
+  i_can_view_policy_page: Boolean
   i_can_view_private: Boolean
   i_can_view_program_analytics: Boolean!
   i_can_view_program_info: Boolean
@@ -37091,6 +38105,7 @@ type Team implements ActivitiesInterface & Node & ResourceInterface {
     order_by: TeamPostOrderInput = {direction: DESC, field: created_at}
   ): TeamPostConnection
   product_edition: ProductEdition
+  profile_metrics_snapshot: ProfileMetricsSnapshot
   profile_picture(size: ProfilePictureSizes!): String!
   program_leave_survey_answers(
     """
@@ -37130,6 +38145,7 @@ type Team implements ActivitiesInterface & Node & ResourceInterface {
   ): SurveyAnswerConnection
   publicly_visible_retesting: Boolean
   remaining_retest_count: Int
+  remediation_guidance_disabled_at: DateTime
   remediation_guidance_enabled: Boolean!
   report_sources: [String!]
   report_submission_form_intro: String
@@ -37172,6 +38188,7 @@ type Team implements ActivitiesInterface & Node & ResourceInterface {
     """
     after: String
     approaching_sla_violation: [SlaTypeEnum!]
+    assignee: AssigneeInputType = null
 
     """
     Returns the elements in the list that come before the specified cursor.
@@ -37185,6 +38202,7 @@ type Team implements ActivitiesInterface & Node & ResourceInterface {
     """
     first: Int
     handle: String
+    has_assignee: Boolean
     has_retests: Boolean
 
     """
@@ -37192,6 +38210,7 @@ type Team implements ActivitiesInterface & Node & ResourceInterface {
     """
     last: Int
     not_approaching_any_sla_violation: Boolean
+    offset: Int
     order_by: ReportOrderInput = {direction: DESC, field: id}
     pre_submission_review_states: [ReportPreSubmissionReviewStateEnum] = null
     secure_order_by: FiltersReportFilterOrder
@@ -37214,6 +38233,7 @@ type Team implements ActivitiesInterface & Node & ResourceInterface {
   settings_disabled: Boolean
   settings_link: String
   setup_guide_completed: Boolean
+  should_generate_feedback_summary: Boolean
   signal_requirements_setting: SignalRequirementsSetting
   sla_failed_count: Int
   sla_setting: SlaSetting
@@ -37423,7 +38443,7 @@ type Team implements ActivitiesInterface & Node & ResourceInterface {
     size: Int
     sort: SortInput
   ): SearchResultConnection
-  structured_scopes_with_credentials: [StructuredScopeWithCredential!]!
+  structured_scopes_with_credentials(all_credentials_revoked: Boolean): [StructuredScopeWithCredential!]!
   submission_requirements: SubmissionRequirements
   submission_requirements_enabled: Boolean
   submission_state: SubmissionStateEnum
@@ -37993,6 +39013,8 @@ type TeamDisplayOptions implements Node {
   show_response_efficiency_indicator: Boolean!
   show_top_bounties: Boolean!
   show_total_bounties_paid: Boolean!
+  show_total_reports_per_asset: Boolean!
+  show_total_reports_per_severity: Boolean!
   team: Team!
 }
 
@@ -39193,6 +40215,52 @@ type ToggleArchivedCustomFieldAttributePayload implements MutationResult {
 }
 
 """
+Autogenerated input type of ToggleBookmarkNotification
+"""
+input ToggleBookmarkNotificationInput {
+  bookmarked: Boolean!
+
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+  notification_id: Int!
+}
+
+"""
+Autogenerated return type of ToggleBookmarkNotification.
+"""
+type ToggleBookmarkNotificationPayload implements MutationResult {
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+  errors(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+    types: [ErrorTypeEnum]
+  ): ErrorConnection!
+  was_successful: Boolean!
+}
+
+"""
 Autogenerated input type of ToggleCollaborationWithNonWhitelistedHackers
 """
 input ToggleCollaborationWithNonWhitelistedHackersInput {
@@ -39280,6 +40348,52 @@ type ToggleFollowUserPayload implements MutationResult {
   ): ErrorConnection!
   me: User
   user: User
+  was_successful: Boolean!
+}
+
+"""
+Autogenerated input type of ToggleHai
+"""
+input ToggleHaiInput {
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+  hai_enabled: Boolean!
+  organization_id: ID!
+}
+
+"""
+Autogenerated return type of ToggleHai.
+"""
+type ToggleHaiPayload implements MutationResult {
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+  errors(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+    types: [ErrorTypeEnum]
+  ): ErrorConnection!
+  organization: Organization
   was_successful: Boolean!
 }
 
@@ -40007,7 +41121,6 @@ type TriageWorkflow implements Node {
   priority: String
   require_credentials: Boolean
   require_custom_fields: Boolean
-  require_triage_summary: Boolean
   team: Team!
 }
 
@@ -41057,6 +42170,54 @@ type UpdateAutomaticInvitesPayload implements MutationResult {
 }
 
 """
+Autogenerated input type of UpdateAutomationEnabled
+"""
+input UpdateAutomationEnabledInput {
+  automation_id: ID!
+
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+  enabled: Boolean!
+}
+
+"""
+Autogenerated return type of UpdateAutomationEnabled.
+"""
+type UpdateAutomationEnabledPayload implements MutationResult {
+  automation: Automation!
+
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+  errors(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+    types: [ErrorTypeEnum]
+  ): ErrorConnection!
+  was_successful: Boolean!
+}
+
+"""
 Autogenerated input type of UpdateBbpLaunchConfigurationCurrentStep
 """
 input UpdateBbpLaunchConfigurationCurrentStepInput {
@@ -41111,17 +42272,12 @@ input UpdateBbpLaunchConfigurationPolicyInput {
   A unique identifier for the client performing the mutation.
   """
   clientMutationId: String
-  policy_brand_promise: String
   policy_custom_section_content: String
   policy_custom_section_name: String
   policy_disclosure_policies: String
-  policy_faq: String
-  policy_legal: String
   policy_out_of_scope: String
-  policy_program_eligibility: String
   policy_program_rules: String
-  policy_rewards: String
-  policy_safe_harbor: String
+  policy_test_plan: String
   team_id: ID!
 }
 
@@ -41303,7 +42459,6 @@ input UpdateCampaignInput {
   researchers_information: String!
   start_date: DateTime!
   structured_scope_ids: [ID!]!
-  team_id: ID!
 }
 
 """
@@ -41575,6 +42730,52 @@ type UpdateCustomFieldAttributePayload implements MutationResult {
     last: Int
     types: [ErrorTypeEnum]
   ): ErrorConnection!
+  was_successful: Boolean!
+}
+
+"""
+Autogenerated input type of UpdateCustomInboxNotificationPreference
+"""
+input UpdateCustomInboxNotificationPreferenceInput {
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+  enabled: Boolean!
+  organization_inbox_id: ID!
+}
+
+"""
+Autogenerated return type of UpdateCustomInboxNotificationPreference.
+"""
+type UpdateCustomInboxNotificationPreferencePayload implements MutationResult {
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+  errors(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+    types: [ErrorTypeEnum]
+  ): ErrorConnection!
+  organization_inbox: OrganizationInbox!
   was_successful: Boolean!
 }
 
@@ -42591,6 +43792,56 @@ type UpdateLastViewedNewFeaturesAtPayload implements MutationResult {
 }
 
 """
+Autogenerated input type of UpdateLlmApp
+"""
+input UpdateLlmAppInput {
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+  color: String!
+  description: String!
+  instructions: String!
+  llm_app_id: ID!
+  name: String!
+  placeholder: String!
+}
+
+"""
+Autogenerated return type of UpdateLlmApp.
+"""
+type UpdateLlmAppPayload implements MutationResult {
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+  errors(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+    types: [ErrorTypeEnum]
+  ): ErrorConnection!
+  llm_app: LlmApp
+  was_successful: Boolean!
+}
+
+"""
 Autogenerated input type of UpdateLlmConversationMessage
 """
 input UpdateLlmConversationMessageInput {
@@ -43025,57 +44276,6 @@ type UpdateOrganizationSamlProviderAlternativeCertificatePayload implements Muta
 }
 
 """
-Autogenerated input type of UpdateOrganizationSamlProvider
-"""
-input UpdateOrganizationSamlProviderInput {
-  allow_sign_up: Boolean!
-  certificate: String!
-
-  """
-  A unique identifier for the client performing the mutation.
-  """
-  clientMutationId: String
-  domain_ownership_ids: [ID!]!
-  name: String!
-  saml_provider_id: ID!
-  single_sign_on_url: String!
-}
-
-"""
-Autogenerated return type of UpdateOrganizationSamlProvider.
-"""
-type UpdateOrganizationSamlProviderPayload implements MutationResult {
-  """
-  A unique identifier for the client performing the mutation.
-  """
-  clientMutationId: String
-  errors(
-    """
-    Returns the elements in the list that come after the specified cursor.
-    """
-    after: String
-
-    """
-    Returns the elements in the list that come before the specified cursor.
-    """
-    before: String
-
-    """
-    Returns the first _n_ elements from the list.
-    """
-    first: Int
-
-    """
-    Returns the last _n_ elements from the list.
-    """
-    last: Int
-    types: [ErrorTypeEnum]
-  ): ErrorConnection!
-  saml_provider: SamlProvider
-  was_successful: Boolean!
-}
-
-"""
 Autogenerated input type of UpdateOrganizationSolutionInstance
 """
 input UpdateOrganizationSolutionInstanceInput {
@@ -43121,6 +44321,57 @@ type UpdateOrganizationSolutionInstancePayload implements MutationResult {
   ): ErrorConnection!
   organization: Organization
   solution_instance: SolutionInstance
+  was_successful: Boolean!
+}
+
+"""
+Autogenerated input type of UpdateOrganizationTestingSamlProvider
+"""
+input UpdateOrganizationTestingSamlProviderInput {
+  allow_sign_up: Boolean!
+  certificate: String!
+
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+  domain_ownership_ids: [ID!]!
+  name: String!
+  saml_provider_id: ID!
+  single_sign_on_url: String!
+}
+
+"""
+Autogenerated return type of UpdateOrganizationTestingSamlProvider.
+"""
+type UpdateOrganizationTestingSamlProviderPayload implements MutationResult {
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+  errors(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+    types: [ErrorTypeEnum]
+  ): ErrorConnection!
+  saml_provider: SamlProvider
   was_successful: Boolean!
 }
 
@@ -43183,7 +44434,7 @@ input UpdatePaymentsUserMutationInput {
   """
   clientMutationId: String
   pause_payouts: Boolean
-  payout_cadence: PayoutCadenceEnum
+  payout_cadence: PayoutCadenceEnum!
   payout_threshold_amount: Int
 }
 
@@ -43647,6 +44898,103 @@ type UpdateProgramPolicyPayload implements MutationResult {
     types: [ErrorTypeEnum]
   ): ErrorConnection!
   team: Team
+  was_successful: Boolean!
+}
+
+"""
+Autogenerated input type of UpdateReconContext
+"""
+input UpdateReconContextInput {
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+  description: String
+  name: String
+  recon_context_id: Int!
+}
+
+"""
+Autogenerated return type of UpdateReconContext.
+"""
+type UpdateReconContextPayload implements MutationResult {
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+  errors(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+    types: [ErrorTypeEnum]
+  ): ErrorConnection!
+  recon_context: ReconCenterContext
+  was_successful: Boolean!
+}
+
+"""
+Autogenerated input type of UpdateReconDocument
+"""
+input UpdateReconDocumentInput {
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+  description: String
+  information_type: ReconInformationTypeEnum
+  name: String
+  pinned: Boolean
+  recon_document_id: Int!
+  tool_source: ReconToolEnum
+}
+
+"""
+Autogenerated return type of UpdateReconDocument.
+"""
+type UpdateReconDocumentPayload implements MutationResult {
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+  errors(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+    types: [ErrorTypeEnum]
+  ): ErrorConnection!
+  recon_document: ReconCenterDocument
   was_successful: Boolean!
 }
 
@@ -45380,6 +46728,8 @@ input UpdateTeamDisplayOptionsInput {
   show_reports_resolved: Boolean
   show_top_bounties: Boolean
   show_total_bounties_paid: Boolean
+  show_total_reports_per_asset: Boolean
+  show_total_reports_per_severity: Boolean
   team_id: ID!
 }
 
@@ -45611,13 +46961,17 @@ input UpdateTeamPolicyInput {
   """
   clientMutationId: String
   complies_with_standard_ineligible_findings: Boolean
+  contact_email: String
   custom_message_for_policy_change: String
   has_open_scope: Boolean
   introduction: String
   notify_subscribers_of_policy_change: Boolean
   pays_within_one_month: Boolean
+  platform_standards_exclusions: [String!]
   policy: String
   protected_by_gold_standard_safe_harbor: Boolean
+  scope_exclusions: [ScopeExclusionInput!]
+  standard_ineligible_findings_exclusions: [String!]
   team_id: ID!
 }
 
@@ -46847,11 +48201,12 @@ input UpdateVdpLaunchConfigurationPolicyInput {
   A unique identifier for the client performing the mutation.
   """
   clientMutationId: String
-  policy_brand_promise: String
+  policy_custom_section_content: String
+  policy_custom_section_name: String
   policy_disclosure_policies: String
   policy_out_of_scope: String
-  policy_safe_harbor: String
-  policy_scope: String
+  policy_program_rules: String
+  policy_test_plan: String
   team_id: ID!
 }
 
@@ -47564,8 +48919,10 @@ type User implements ActivitiesInterface & Node & ResourceInterface {
   has_api_token: Boolean
   has_ctf_flags: Boolean
   has_tray_profile: Boolean
+  i_can_see_hai: Boolean
   i_can_update_invitation_profile: Boolean
   i_can_update_username: Boolean
+  i_can_use_hai: Boolean
   i_can_view_gateway_v2_settings: Boolean
   i_can_view_vpn_credentials: Boolean
   id: ID!
@@ -47717,7 +49074,7 @@ type User implements ActivitiesInterface & Node & ResourceInterface {
     """
     last: Int
   ): NotificationDeliveryPreferenceConnection
-  notifications(include_message: Boolean, include_read: Boolean, just_mentions: Boolean, page: Int, sort_direction: String): [VirtualNotification!]
+  notifications(assignee: AssigneeInputType, include_message: Boolean, include_read: Boolean, just_mentions: Boolean, page: Int, page_size: Int, sort_direction: String, team_ids: [Int], type: String, user_type: String): [VirtualNotification!]
   open_for_employment: Boolean
   organizations(
     """
@@ -47928,6 +49285,7 @@ type User implements ActivitiesInterface & Node & ResourceInterface {
     Returns the elements in the list that come after the specified cursor.
     """
     after: String
+    assignee: AssigneeInputType = null
 
     """
     Returns the elements in the list that come before the specified cursor.
@@ -47941,12 +49299,14 @@ type User implements ActivitiesInterface & Node & ResourceInterface {
     """
     first: Int
     handle: String
+    has_assignee: Boolean
     has_retests: Boolean
 
     """
     Returns the last _n_ elements from the list.
     """
     last: Int
+    offset: Int
     order_by: ReportOrderInput = {direction: DESC, field: id}
     pre_submission_review_states: [ReportPreSubmissionReviewStateEnum] = null
     secure_order_by: FiltersReportFilterOrder
@@ -48255,6 +49615,9 @@ type User implements ActivitiesInterface & Node & ResourceInterface {
     """
     last: Int
   ): ThanksItemConnection
+  total_earnings: Float
+  total_manual_user_balance_adjustments: Float
+  total_payouts: Float
   totp_enabled: Boolean
   totp_supported: Boolean
   triage_ratings(
@@ -48304,7 +49667,7 @@ type User implements ActivitiesInterface & Node & ResourceInterface {
   ): TutorialConnection
   twitter_handle: String
   unconfirmed_email: String
-  unread_notification_count: Int
+  unread_notification_count(assignee: AssigneeInputType, team_ids: [Int], type: String, user_type: String): Int
   url: URI!
 
   """
@@ -48684,6 +50047,15 @@ type UserInputDraft implements Node {
 }
 
 """
+Possible subscription options for notification preferences
+"""
+enum UserNotificationPreferenceOptionEnum {
+  all_reports_activities
+  no_reports_activities
+  tailored_reports_activities
+}
+
+"""
 A user opportunities feedback object
 """
 type UserOpportunitiesFeedback implements Node {
@@ -48874,6 +50246,7 @@ Types a user can be
 """
 enum UserTypeEnum {
   api
+  automation
   company
   hacker
   integrations
@@ -48886,19 +50259,20 @@ VDP launch configuration for a team
 """
 type VdpLaunchConfiguration implements Node {
   current_configuration_step: String
-  has_changed_brand_promise: Boolean!
+  has_changed_custom_section: Boolean!
   has_changed_disclosure_policies: Boolean!
   has_changed_out_of_scope: Boolean!
-  has_changed_safe_harbor: Boolean!
-  has_changed_scope: Boolean!
+  has_changed_program_rules: Boolean!
+  has_changed_test_plan: Boolean!
   id: ID!
   launch_at: DateTime
   launch_requested_at: DateTime
-  policy_brand_promise: String
+  policy_custom_section_content: String
+  policy_custom_section_name: String
   policy_disclosure_policies: String
   policy_out_of_scope: String
-  policy_safe_harbor: String
-  policy_scope: String
+  policy_program_rules: String
+  policy_test_plan: String
 }
 
 """
@@ -49050,6 +50424,7 @@ type VirtualNotification implements Node {
   award_amount: String
   award_amount_lead: String
   bonus_amount: String
+  bookmarked: Boolean
   created_at: DateTime!
   custom_message: String
   end_time: String
@@ -49069,6 +50444,8 @@ type VirtualNotification implements Node {
   pentest_start: String
   pentest_timezone: String
   readable_closing_substate: String
+  report: Report
+  report_i_am_subscribed: Boolean
   report_id: Int
   report_state: String
   report_substate: String
@@ -49819,4 +51196,52 @@ input WriteUpTemplateConfigKeyEnumInputPredicateInput {
   _lt: WriteUpTemplateConfigKeyEnumInput
   _lte: WriteUpTemplateConfigKeyEnumInput
   _neq: WriteUpTemplateConfigKeyEnumInput
+}
+
+"""
+Autogenerated input type of updateOrganizationLockedgSamlProvider
+"""
+input updateOrganizationLockedgSamlProviderInput {
+  allow_sign_up: Boolean!
+
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+  name: String!
+  saml_provider_id: ID!
+}
+
+"""
+Autogenerated return type of updateOrganizationLockedgSamlProvider.
+"""
+type updateOrganizationLockedgSamlProviderPayload implements MutationResult {
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+  errors(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+    types: [ErrorTypeEnum]
+  ): ErrorConnection!
+  saml_provider: SamlProvider
+  was_successful: Boolean!
 }

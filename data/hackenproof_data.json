@@ -356,6 +356,27 @@
     }
   },
   {
+    "id": "/aptos/aptos-network",
+    "name": "Aptos Network",
+    "url": "https://hackenproof.com/aptos/aptos-network",
+    "archived": false,
+    "triaged_by_hackenproof": true,
+    "targets": {
+      "in_scope": [
+        {
+          "target": "https://github.com/aptos-labs/aptos-core/tree/mainnet",
+          "type": "Code",
+          "instruction": "",
+          "severity": "Critical",
+          "reward": "Bounty"
+        }
+      ],
+      "out_of_scope": [
+
+      ]
+    }
+  },
+  {
     "id": "/assetmantle/assetmantle",
     "name": "AssetMantle",
     "url": "https://hackenproof.com/assetmantle/assetmantle",
@@ -1173,6 +1194,33 @@
     }
   },
   {
+    "id": "/aviator/aviator-smart-contracts",
+    "name": "Aviator Smart Contracts",
+    "url": "https://hackenproof.com/aviator/aviator-smart-contracts",
+    "archived": false,
+    "triaged_by_hackenproof": true,
+    "targets": {
+      "in_scope": [
+        {
+          "target": "https://github.com/AviatorAC/skybridge-public",
+          "type": "Smart Contract",
+          "instruction": "",
+          "severity": "Critical",
+          "reward": "Bounty"
+        }
+      ],
+      "out_of_scope": [
+        {
+          "target": "https://github.com/AviatorAC/aviator-token",
+          "type": "Smart Contract",
+          "instruction": "",
+          "severity": "None",
+          "reward": ""
+        }
+      ]
+    }
+  },
+  {
     "id": "/bkex/bkex",
     "name": "BKEX",
     "url": "https://hackenproof.com/bkex/bkex",
@@ -1486,6 +1534,27 @@
     }
   },
   {
+    "id": "/bitdelta/bitdelta-web",
+    "name": "BitDelta Web",
+    "url": "https://hackenproof.com/bitdelta/bitdelta-web",
+    "archived": false,
+    "triaged_by_hackenproof": false,
+    "targets": {
+      "in_scope": [
+        {
+          "target": "https://bitdelta.com/",
+          "type": "Web",
+          "instruction": "",
+          "severity": "Critical",
+          "reward": "Bounty"
+        }
+      ],
+      "out_of_scope": [
+
+      ]
+    }
+  },
+  {
     "id": "/bitforex/bitforex",
     "name": "BitForex",
     "url": "https://hackenproof.com/bitforex/bitforex",
@@ -1573,27 +1642,6 @@
         {
           "target": "https://api.bitstorage.finance/",
           "type": "API",
-          "instruction": "",
-          "severity": "Critical",
-          "reward": "Bounty"
-        }
-      ],
-      "out_of_scope": [
-
-      ]
-    }
-  },
-  {
-    "id": "/bitdelta/bitdelta-web",
-    "name": "Bitdelta Web",
-    "url": "https://hackenproof.com/bitdelta/bitdelta-web",
-    "archived": false,
-    "triaged_by_hackenproof": false,
-    "targets": {
-      "in_scope": [
-        {
-          "target": "https://bitdelta.com/",
-          "type": "Web",
           "instruction": "",
           "severity": "Critical",
           "reward": "Bounty"
@@ -1947,6 +1995,62 @@
     }
   },
   {
+    "id": "/bluefin/bluefin-smart-contracts",
+    "name": "Bluefin Smart Contracts",
+    "url": "https://hackenproof.com/bluefin/bluefin-smart-contracts",
+    "archived": false,
+    "triaged_by_hackenproof": true,
+    "targets": {
+      "in_scope": [
+        {
+          "target": "https://github.com/hackenproof-public/bluefin-liquidity-vaults-contracts",
+          "type": "Smart Contract",
+          "instruction": "Please contact our support team in Discord to get access to scope.",
+          "severity": "Critical",
+          "reward": "Bounty"
+        },
+        {
+          "target": "https://github.com/hackenproof-public/bluefin-exchange-contracts-sui",
+          "type": "Smart Contract",
+          "instruction": "Please contact our support team in Discord to get access to scope.",
+          "severity": "Critical",
+          "reward": "Bounty"
+        },
+        {
+          "target": "https://github.com/hackenproof-public/elixir_bluefin_integration",
+          "type": "Smart Contract",
+          "instruction": "Please contact our support team in Discord to get access to scope.",
+          "severity": "Critical",
+          "reward": "Bounty"
+        }
+      ],
+      "out_of_scope": [
+
+      ]
+    }
+  },
+  {
+    "id": "/bluefin/bluefin-web",
+    "name": "Bluefin Web",
+    "url": "https://hackenproof.com/bluefin/bluefin-web",
+    "archived": false,
+    "triaged_by_hackenproof": true,
+    "targets": {
+      "in_scope": [
+        {
+          "target": "https://bluefin.io/",
+          "type": "Web",
+          "instruction": "",
+          "severity": "Critical",
+          "reward": "Bounty"
+        }
+      ],
+      "out_of_scope": [
+
+      ]
+    }
+  },
+  {
     "id": "/bunicorn/bunicorn-1",
     "name": "Bunicorn",
     "url": "https://hackenproof.com/bunicorn/bunicorn-1",
@@ -1978,7 +2082,7 @@
     "id": "/citex-exchange/citex-web-and-api",
     "name": "CITEX Web & API",
     "url": "https://hackenproof.com/citex-exchange/citex-web-and-api",
-    "archived": false,
+    "archived": true,
     "triaged_by_hackenproof": false,
     "targets": {
       "in_scope": [
@@ -2055,41 +2159,6 @@
           "target": "api.codex.one",
           "type": "API",
           "instruction": "",
-          "severity": "Critical",
-          "reward": "Bounty"
-        }
-      ],
-      "out_of_scope": [
-
-      ]
-    }
-  },
-  {
-    "id": "/camino-network/camino-network-protocol",
-    "name": "Camino Network Protocol",
-    "url": "https://hackenproof.com/camino-network/camino-network-protocol",
-    "archived": false,
-    "triaged_by_hackenproof": false,
-    "targets": {
-      "in_scope": [
-        {
-          "target": "https://github.com/chain4travel/caminogo",
-          "type": "Protocol",
-          "instruction": "",
-          "severity": "Critical",
-          "reward": "Bounty"
-        },
-        {
-          "target": "https://github.com/chain4travel/caminoethvm",
-          "type": "Protocol",
-          "instruction": "",
-          "severity": "Critical",
-          "reward": "Bounty"
-        },
-        {
-          "target": "https://github.com/chain4travel/camino-node",
-          "type": "Protocol",
-          "instruction": "CaminoJS",
           "severity": "Critical",
           "reward": "Bounty"
         }
@@ -2283,6 +2352,41 @@
           "severity": "Critical",
           "reward": ""
         }
+      ]
+    }
+  },
+  {
+    "id": "/coinex-global/coinex-web-and-mobile",
+    "name": "CoinEx Web & Mobile",
+    "url": "https://hackenproof.com/coinex-global/coinex-web-and-mobile",
+    "archived": false,
+    "triaged_by_hackenproof": true,
+    "targets": {
+      "in_scope": [
+        {
+          "target": "https://www.coinex.com/en/",
+          "type": "Web",
+          "instruction": "",
+          "severity": "Critical",
+          "reward": "Bounty"
+        },
+        {
+          "target": "https://apps.apple.com/us/app/coinex-buy-bitcoin-ethereum/id1626447428",
+          "type": "iOS",
+          "instruction": "",
+          "severity": "Critical",
+          "reward": "Bounty"
+        },
+        {
+          "target": "https://play.google.com/store/apps/details?id=com.coinex.trade.play",
+          "type": "Android",
+          "instruction": "",
+          "severity": "Critical",
+          "reward": "Bounty"
+        }
+      ],
+      "out_of_scope": [
+
       ]
     }
   },
@@ -4199,6 +4303,76 @@
     }
   },
   {
+    "id": "/goby/goby-wallet",
+    "name": "Goby Wallet",
+    "url": "https://hackenproof.com/goby/goby-wallet",
+    "archived": false,
+    "triaged_by_hackenproof": true,
+    "targets": {
+      "in_scope": [
+        {
+          "target": "https://www.goby.app/",
+          "type": "Web",
+          "instruction": "",
+          "severity": "Critical",
+          "reward": "Bounty"
+        }
+      ],
+      "out_of_scope": [
+
+      ]
+    }
+  },
+  {
+    "id": "/all-in-bits/govgen",
+    "name": "GovGen",
+    "url": "https://hackenproof.com/all-in-bits/govgen",
+    "archived": false,
+    "triaged_by_hackenproof": true,
+    "targets": {
+      "in_scope": [
+        {
+          "target": "https://github.com/atomone-hub/govgen",
+          "type": "Code",
+          "instruction": "",
+          "severity": "Critical",
+          "reward": "Bounty"
+        },
+        {
+          "target": "https://github.com/atomone-hub/govgen-proposals/blob/main/submit-tx-securely.md",
+          "type": "Other",
+          "instruction": "",
+          "severity": "Critical",
+          "reward": "Bounty"
+        }
+      ],
+      "out_of_scope": [
+
+      ]
+    }
+  },
+  {
+    "id": "/all-in-bits/govgen-governance-dapp",
+    "name": "GovGen Governance dApp",
+    "url": "https://hackenproof.com/all-in-bits/govgen-governance-dapp",
+    "archived": false,
+    "triaged_by_hackenproof": true,
+    "targets": {
+      "in_scope": [
+        {
+          "target": "https://github.com/allinbits/govgen-governance-dapp",
+          "type": "Code",
+          "instruction": "",
+          "severity": "Critical",
+          "reward": "Bounty"
+        }
+      ],
+      "out_of_scope": [
+
+      ]
+    }
+  },
+  {
     "id": "/gridex/gridex-protocol-hacker-house-2023",
     "name": "Gridex Protocol: Hacker House 2023",
     "url": "https://hackenproof.com/gridex/gridex-protocol-hacker-house-2023",
@@ -4291,6 +4465,21 @@
           "severity": "None",
           "reward": ""
         }
+      ]
+    }
+  },
+  {
+    "id": "/internet-computer/hack-to-the-future-2024-icp-dot-hub-ae-hackathon",
+    "name": "Hack to the Future 2024 | ICP.Hub AE Hackathon",
+    "url": "https://hackenproof.com/internet-computer/hack-to-the-future-2024-icp-dot-hub-ae-hackathon",
+    "archived": true,
+    "triaged_by_hackenproof": false,
+    "targets": {
+      "in_scope": [
+
+      ],
+      "out_of_scope": [
+
       ]
     }
   },
@@ -4503,6 +4692,20 @@
           "instruction": "",
           "severity": "Critical",
           "reward": "Bounty"
+        },
+        {
+          "target": "https://bridge.iotex.io",
+          "type": "Web",
+          "instruction": "",
+          "severity": "Critical",
+          "reward": "Bounty"
+        },
+        {
+          "target": "https://depinscan.io/",
+          "type": "Web",
+          "instruction": "",
+          "severity": "Critical",
+          "reward": "Bounty"
         }
       ],
       "out_of_scope": [
@@ -4626,7 +4829,7 @@
     "id": "/kucoin/kucoin",
     "name": "KuCoin",
     "url": "https://hackenproof.com/kucoin/kucoin",
-    "archived": false,
+    "archived": true,
     "triaged_by_hackenproof": false,
     "targets": {
       "in_scope": [
@@ -5185,6 +5388,27 @@
     }
   },
   {
+    "id": "/aptos/move-on-aptos-beta-compiler",
+    "name": "Move on Aptos Beta Compiler",
+    "url": "https://hackenproof.com/aptos/move-on-aptos-beta-compiler",
+    "archived": false,
+    "triaged_by_hackenproof": true,
+    "targets": {
+      "in_scope": [
+        {
+          "target": "https://github.com/aptos-labs/aptos-core/tree/main/third_party/move/move-compiler-v2",
+          "type": "Code",
+          "instruction": "",
+          "severity": "Critical",
+          "reward": "Bounty"
+        }
+      ],
+      "out_of_scope": [
+
+      ]
+    }
+  },
+  {
     "id": "/myetherwallet/myetherwallet",
     "name": "MyEtherWallet",
     "url": "https://hackenproof.com/myetherwallet/myetherwallet",
@@ -5275,9 +5499,9 @@
     }
   },
   {
-    "id": "/near/near-smart-contracts-critical",
-    "name": "NEAR Smart Contracts (Critical)",
-    "url": "https://hackenproof.com/near/near-smart-contracts-critical",
+    "id": "/near/near-smart-contracts-1",
+    "name": "NEAR Smart Contracts",
+    "url": "https://hackenproof.com/near/near-smart-contracts-1",
     "archived": false,
     "triaged_by_hackenproof": true,
     "targets": {
@@ -5324,9 +5548,9 @@
     }
   },
   {
-    "id": "/near/near-web-medium",
-    "name": "NEAR Web (Medium)",
-    "url": "https://hackenproof.com/near/near-web-medium",
+    "id": "/near/near-web",
+    "name": "NEAR Web",
+    "url": "https://hackenproof.com/near/near-web",
     "archived": false,
     "triaged_by_hackenproof": true,
     "targets": {
@@ -5468,125 +5692,6 @@
           "type": "Smart Contract",
           "instruction": "",
           "severity": "Critical",
-          "reward": "Bounty"
-        }
-      ],
-      "out_of_scope": [
-
-      ]
-    }
-  },
-  {
-    "id": "/near/near-smart-contract-high",
-    "name": "Near Smart Contract (High)",
-    "url": "https://hackenproof.com/near/near-smart-contract-high",
-    "archived": false,
-    "triaged_by_hackenproof": true,
-    "targets": {
-      "in_scope": [
-        {
-          "target": "https://github.com/near/core-contracts",
-          "type": "Smart Contract",
-          "instruction": "A set of smart contracts that play important roles in the NEAR ecosystem",
-          "severity": "",
-          "reward": "Bounty"
-        },
-        {
-          "target": "https://github.com/near/core-contracts/tree/master/lockup-factory",
-          "type": "Smart Contract",
-          "instruction": "lockup factory",
-          "severity": "",
-          "reward": "Bounty"
-        },
-        {
-          "target": "https://github.com/near/core-contracts/tree/master/multisig-factory",
-          "type": "Smart Contract",
-          "instruction": "multisig factory",
-          "severity": "",
-          "reward": "Bounty"
-        }
-      ],
-      "out_of_scope": [
-
-      ]
-    }
-  },
-  {
-    "id": "/near/near-smart-contract-medium",
-    "name": "Near Smart Contract (Medium)",
-    "url": "https://hackenproof.com/near/near-smart-contract-medium",
-    "archived": false,
-    "triaged_by_hackenproof": true,
-    "targets": {
-      "in_scope": [
-        {
-          "target": "https://github.com/near/near-linkdrop",
-          "type": "Smart Contract",
-          "instruction": "LinkDrop contract allows any user to create a link that their friends can use to claim tokens even if they don't have an account yet.",
-          "severity": "",
-          "reward": "Bounty"
-        },
-        {
-          "target": "https://github.com/near-examples/NFT/tree/console",
-          "type": "Other",
-          "instruction": "NEAR examples- NFT",
-          "severity": "",
-          "reward": "Bounty"
-        },
-        {
-          "target": "https://github.com/near-examples/FT",
-          "type": "Other",
-          "instruction": "NEAR examples-FT",
-          "severity": "",
-          "reward": "Bounty"
-        },
-        {
-          "target": "https://github.com/near/near-sdk-js",
-          "type": "Smart Contract",
-          "instruction": "",
-          "severity": "",
-          "reward": "Bounty"
-        },
-        {
-          "target": "https://github.com/near/near-sdk-rs",
-          "type": "Smart Contract",
-          "instruction": "",
-          "severity": "",
-          "reward": "Bounty"
-        },
-        {
-          "target": "https://github.com/near/near-cli-rs",
-          "type": "Smart Contract",
-          "instruction": "",
-          "severity": "",
-          "reward": "Bounty"
-        },
-        {
-          "target": "https://github.com/near/near-cli",
-          "type": "Smart Contract",
-          "instruction": "",
-          "severity": "",
-          "reward": "Bounty"
-        }
-      ],
-      "out_of_scope": [
-
-      ]
-    }
-  },
-  {
-    "id": "/near/near-wallet-1",
-    "name": "Near Wallet",
-    "url": "https://hackenproof.com/near/near-wallet-1",
-    "archived": true,
-    "triaged_by_hackenproof": true,
-    "targets": {
-      "in_scope": [
-        {
-          "target": "wallet.near.org",
-          "type": "Web",
-          "instruction": "",
-          "severity": "",
           "reward": "Bounty"
         }
       ],
@@ -6003,27 +6108,6 @@
     }
   },
   {
-    "id": "/pumb-dot-ua/pumb-web",
-    "name": "PUMB Web",
-    "url": "https://hackenproof.com/pumb-dot-ua/pumb-web",
-    "archived": true,
-    "triaged_by_hackenproof": true,
-    "targets": {
-      "in_scope": [
-        {
-          "target": "*.pumb.ua",
-          "type": "Web",
-          "instruction": "",
-          "severity": "Critical",
-          "reward": "Bounty"
-        }
-      ],
-      "out_of_scope": [
-
-      ]
-    }
-  },
-  {
     "id": "/ternoa/pallets",
     "name": "Pallets",
     "url": "https://hackenproof.com/ternoa/pallets",
@@ -6075,27 +6159,6 @@
       "in_scope": [
         {
           "target": "https://pandora.digital",
-          "type": "Web",
-          "instruction": "",
-          "severity": "Critical",
-          "reward": "Bounty"
-        }
-      ],
-      "out_of_scope": [
-
-      ]
-    }
-  },
-  {
-    "id": "/pumb-dot-ua/payhub-web",
-    "name": "Payhub Web",
-    "url": "https://hackenproof.com/pumb-dot-ua/payhub-web",
-    "archived": true,
-    "triaged_by_hackenproof": true,
-    "targets": {
-      "in_scope": [
-        {
-          "target": "https://standalone2.fuib.com",
           "type": "Web",
           "instruction": "",
           "severity": "Critical",
@@ -6292,7 +6355,7 @@
         {
           "target": "tms.polo-static.com",
           "type": "Web",
-          "instruction": "Poloniex API documentation\nhttps://poloniex.com/support/api",
+          "instruction": "",
           "severity": "Critical",
           "reward": "Bounty"
         },
@@ -6464,33 +6527,6 @@
     }
   },
   {
-    "id": "/pumb-dot-ua/pumb-tacsk",
-    "name": "Pumb Tacsk",
-    "url": "https://hackenproof.com/pumb-dot-ua/pumb-tacsk",
-    "archived": true,
-    "triaged_by_hackenproof": true,
-    "targets": {
-      "in_scope": [
-        {
-          "target": "Tacsk.fuib.com",
-          "type": "Web",
-          "instruction": "3.124.213.220",
-          "severity": "Critical",
-          "reward": "Bounty"
-        }
-      ],
-      "out_of_scope": [
-        {
-          "target": "All other targets that are not mentioned in scope",
-          "type": "Web",
-          "instruction": "",
-          "severity": "None",
-          "reward": ""
-        }
-      ]
-    }
-  },
-  {
     "id": "/risc-zero/risc-zero-zkvm",
     "name": "RISC Zero zkVM",
     "url": "https://hackenproof.com/risc-zero/risc-zero-zkvm",
@@ -6589,20 +6625,14 @@
     }
   },
   {
-    "id": "/near/react-on-chain",
-    "name": "React on Chain",
-    "url": "https://hackenproof.com/near/react-on-chain",
+    "id": "/rare-evo/rare-evo-hack-build-w-slash-iagon-wanchain-and-maestro",
+    "name": "Rare Evo Hack - Build w/ Iagon, Wanchain & Maestro",
+    "url": "https://hackenproof.com/rare-evo/rare-evo-hack-build-w-slash-iagon-wanchain-and-maestro",
     "archived": false,
-    "triaged_by_hackenproof": true,
+    "triaged_by_hackenproof": false,
     "targets": {
       "in_scope": [
-        {
-          "target": "http://roc-sandbox.near.dev/",
-          "type": "Web3",
-          "instruction": "",
-          "severity": "",
-          "reward": "Bounty"
-        }
+
       ],
       "out_of_scope": [
 
@@ -6610,15 +6640,45 @@
     }
   },
   {
-    "id": "/hnt-labs-inc/river-protocol",
-    "name": "River Protocol",
-    "url": "https://hackenproof.com/hnt-labs-inc/river-protocol",
+    "id": "/rare-evo/rare-evo-hackathon-build-on-alchemix-track",
+    "name": "Rare Evo Hackathon - Build on Alchemix Track",
+    "url": "https://hackenproof.com/rare-evo/rare-evo-hackathon-build-on-alchemix-track",
     "archived": false,
     "triaged_by_hackenproof": false,
     "targets": {
       "in_scope": [
+
+      ],
+      "out_of_scope": [
+
+      ]
+    }
+  },
+  {
+    "id": "/rare-evo/rare-evo-hackathon-midnight-data-protection",
+    "name": "Rare Evo Hackathon - Midnight Data Protection",
+    "url": "https://hackenproof.com/rare-evo/rare-evo-hackathon-midnight-data-protection",
+    "archived": false,
+    "triaged_by_hackenproof": false,
+    "targets": {
+      "in_scope": [
+
+      ],
+      "out_of_scope": [
+
+      ]
+    }
+  },
+  {
+    "id": "/river/river-protocol",
+    "name": "River Protocol",
+    "url": "https://hackenproof.com/river/river-protocol",
+    "archived": false,
+    "triaged_by_hackenproof": true,
+    "targets": {
+      "in_scope": [
         {
-          "target": "TBA",
+          "target": "https://github.com/river-build/river",
           "type": "Smart Contract",
           "instruction": "",
           "severity": "Critical",
@@ -6904,6 +6964,54 @@
     }
   },
   {
+    "id": "/slex/slex-web",
+    "name": "Slex Web",
+    "url": "https://hackenproof.com/slex/slex-web",
+    "archived": false,
+    "triaged_by_hackenproof": true,
+    "targets": {
+      "in_scope": [
+        {
+          "target": "https://slex.io/",
+          "type": "Web",
+          "instruction": "",
+          "severity": "Critical",
+          "reward": "Bounty"
+        },
+        {
+          "target": "https://api.slex.io",
+          "type": "Web",
+          "instruction": "",
+          "severity": "Critical",
+          "reward": "Bounty"
+        }
+      ],
+      "out_of_scope": [
+        {
+          "target": "https://support.slex.io/hc/en-us",
+          "type": "Web",
+          "instruction": "",
+          "severity": "None",
+          "reward": ""
+        },
+        {
+          "target": "https://slex-exchange.github.io/slex-api-swagger/",
+          "type": "Web",
+          "instruction": "",
+          "severity": "None",
+          "reward": ""
+        },
+        {
+          "target": "https://blog.slex.io",
+          "type": "Web",
+          "instruction": "",
+          "severity": "None",
+          "reward": ""
+        }
+      ]
+    }
+  },
+  {
     "id": "/smardex/smardex-smart-contracts",
     "name": "SmarDex Smart Contracts",
     "url": "https://hackenproof.com/smardex/smardex-smart-contracts",
@@ -7115,7 +7223,7 @@
     "targets": {
       "in_scope": [
         {
-          "target": "https://github.com/dverso/smilee-v2-contracts/tree/master/src",
+          "target": "https://github.com/smilee-finance/v2-contracts-public/tree/master/src",
           "type": "Smart Contract",
           "instruction": "Smilee v2 core contracts (contracts out of scope are specified in the following tabs)",
           "severity": "",
@@ -7124,28 +7232,28 @@
       ],
       "out_of_scope": [
         {
-          "target": "https://github.com/dverso/smilee-v2-contracts/blob/master/src/periphery/MasterChefSmilee.sol",
+          "target": "https://github.com/smilee-finance/v2-contracts-public/blob/master/src/periphery/MasterChefSmilee.sol",
           "type": "Smart Contract",
           "instruction": "",
           "severity": "None",
           "reward": ""
         },
         {
-          "target": "https://github.com/dverso/smilee-v2-contracts/blob/master/src/periphery/SimpleRewarderPerSec.sol",
+          "target": "https://github.com/smilee-finance/v2-contracts-public/blob/master/src/periphery/SimpleRewarderPerSec.sol",
           "type": "Smart Contract",
           "instruction": "",
           "severity": "None",
           "reward": ""
         },
         {
-          "target": "https://github.com/dverso/smilee-v2-contracts/blob/master/src/periphery/IGAccessNFT.sol",
+          "target": "https://github.com/smilee-finance/v2-contracts-public/blob/master/src/periphery/IGAccessNFT.sol",
           "type": "Smart Contract",
           "instruction": "",
           "severity": "None",
           "reward": ""
         },
         {
-          "target": "https://github.com/dverso/smilee-v2-contracts/tree/master/src/testnet",
+          "target": "https://github.com/smilee-finance/v2-contracts-public/tree/master/src/testnet",
           "type": "Smart Contract",
           "instruction": "",
           "severity": "None",
@@ -7155,9 +7263,9 @@
     }
   },
   {
-    "id": "/status-dot-app/status",
+    "id": "/ift/status",
     "name": "Status",
-    "url": "https://hackenproof.com/status-dot-app/status",
+    "url": "https://hackenproof.com/ift/status",
     "archived": false,
     "triaged_by_hackenproof": true,
     "targets": {
@@ -7177,21 +7285,21 @@
           "reward": "Bounty"
         },
         {
-          "target": "https://status-im-files.ams3.cdn.digitaloceanspaces.com/StatusIm-Desktop-v0.9.0-ef27bb.dmg",
+          "target": "macOS desktop application available at https://status.app/ for Intel and Silicon",
           "type": "Other",
           "instruction": "macOS desktop application",
           "severity": "",
           "reward": "Bounty"
         },
         {
-          "target": "https://status-im-files.ams3.cdn.digitaloceanspaces.com/StatusIm-Desktop-v0.9.0-ef27bb.exe",
+          "target": "https://status.app/api/download/windows",
           "type": "Other",
           "instruction": "Windows desktop application",
           "severity": "",
           "reward": "Bounty"
         },
         {
-          "target": "https://status-im-files.ams3.cdn.digitaloceanspaces.com/StatusIm-Desktop-v0.9.0-ef27bb.tar.gz",
+          "target": "https://status.app/api/download/linux",
           "type": "Web",
           "instruction": "Linux desktop application",
           "severity": "",
@@ -7321,6 +7429,20 @@
           "instruction": "Blockchain/DLT - Sui Framework",
           "severity": "Critical",
           "reward": "Bounty"
+        },
+        {
+          "target": "https://github.com/MystenLabs/sui/tree/main/crates/sui-bridge",
+          "type": "Protocol",
+          "instruction": "",
+          "severity": "Critical",
+          "reward": "Bounty"
+        },
+        {
+          "target": "https://github.com/MystenLabs/sui/tree/main/bridge",
+          "type": "Protocol",
+          "instruction": "",
+          "severity": "High",
+          "reward": "Bounty"
         }
       ],
       "out_of_scope": [
@@ -7441,6 +7563,33 @@
     }
   },
   {
+    "id": "/concordia/superposition-finance-web",
+    "name": "Superposition Finance Web",
+    "url": "https://hackenproof.com/concordia/superposition-finance-web",
+    "archived": false,
+    "triaged_by_hackenproof": true,
+    "targets": {
+      "in_scope": [
+        {
+          "target": "app.superposition.finance",
+          "type": "Web3",
+          "instruction": "",
+          "severity": "Critical",
+          "reward": "Bounty"
+        }
+      ],
+      "out_of_scope": [
+        {
+          "target": "superposition.finance",
+          "type": "Web",
+          "instruction": "",
+          "severity": "None",
+          "reward": ""
+        }
+      ]
+    }
+  },
+  {
     "id": "/swisstronik/swisstronik-blockchain-stability",
     "name": "Swisstronik Blockchain Stability",
     "url": "https://hackenproof.com/swisstronik/swisstronik-blockchain-stability",
@@ -7528,7 +7677,7 @@
     "id": "/tetu/tetu-smart-contracts",
     "name": "TETU Smart Contracts",
     "url": "https://hackenproof.com/tetu/tetu-smart-contracts",
-    "archived": false,
+    "archived": true,
     "triaged_by_hackenproof": true,
     "targets": {
       "in_scope": [
@@ -7698,6 +7847,111 @@
           "type": "Web",
           "instruction": "",
           "severity": "Critical",
+          "reward": "Bounty"
+        }
+      ],
+      "out_of_scope": [
+
+      ]
+    }
+  },
+  {
+    "id": "/ton-foundation/ton-tapps-bot",
+    "name": "TON Tapps Bot",
+    "url": "https://hackenproof.com/ton-foundation/ton-tapps-bot",
+    "archived": false,
+    "triaged_by_hackenproof": true,
+    "targets": {
+      "in_scope": [
+        {
+          "target": "https://t.me/tapps_bot",
+          "type": "Other",
+          "instruction": "",
+          "severity": "",
+          "reward": "Bounty"
+        },
+        {
+          "target": "Apps which are listed within this bot",
+          "type": "Other",
+          "instruction": "",
+          "severity": "",
+          "reward": "Bounty"
+        },
+        {
+          "target": "https://t.me/Open_league_bot",
+          "type": "Other",
+          "instruction": "",
+          "severity": "",
+          "reward": "Bounty"
+        }
+      ],
+      "out_of_scope": [
+
+      ]
+    }
+  },
+  {
+    "id": "/ton-foundation/ton-web-products",
+    "name": "TON Web Products",
+    "url": "https://hackenproof.com/ton-foundation/ton-web-products",
+    "archived": false,
+    "triaged_by_hackenproof": true,
+    "targets": {
+      "in_scope": [
+        {
+          "target": "ton.org",
+          "type": "Web",
+          "instruction": "",
+          "severity": "High",
+          "reward": "Bounty"
+        },
+        {
+          "target": "society.ton.org",
+          "type": "Web",
+          "instruction": "",
+          "severity": "High",
+          "reward": "Bounty"
+        },
+        {
+          "target": "blog.ton.org",
+          "type": "Web",
+          "instruction": "",
+          "severity": "Medium",
+          "reward": "Bounty"
+        },
+        {
+          "target": "docs.ton.org",
+          "type": "Web",
+          "instruction": "",
+          "severity": "Medium",
+          "reward": "Bounty"
+        },
+        {
+          "target": "ton.org/api",
+          "type": "API",
+          "instruction": "API routing and endpoints as Node.js serverless functions. Handles integration with CMS.",
+          "severity": "Medium",
+          "reward": "Bounty"
+        },
+        {
+          "target": "society.ton.org/api",
+          "type": "API",
+          "instruction": "API routing and endpoints as Node.js serverless functions. Handles integration with CMS.",
+          "severity": "Medium",
+          "reward": "Bounty"
+        },
+        {
+          "target": "society.ton.org/v1",
+          "type": "API",
+          "instruction": "TON Society backend services that handle various integrations including content management, interaction with TON blockchain APIs, etc.",
+          "severity": "Medium",
+          "reward": "Bounty"
+        },
+        {
+          "target": "blog.ton.org/api",
+          "type": "API",
+          "instruction": "API routing and endpoints as Node.js serverless functions. Handles integration with CMS and search engine.",
+          "severity": "Medium",
           "reward": "Bounty"
         }
       ],
@@ -8238,6 +8492,27 @@
     }
   },
   {
+    "id": "/unitus/unitus-v2-smart-contracts",
+    "name": "Unitus V2 Smart Contracts",
+    "url": "https://hackenproof.com/unitus/unitus-v2-smart-contracts",
+    "archived": false,
+    "triaged_by_hackenproof": true,
+    "targets": {
+      "in_scope": [
+        {
+          "target": "https://github.com/UnitusLabs/Contracts/wiki/Deployments#base-contracts",
+          "type": "Smart Contract",
+          "instruction": "",
+          "severity": "Critical",
+          "reward": "Bounty"
+        }
+      ],
+      "out_of_scope": [
+
+      ]
+    }
+  },
+  {
     "id": "/vaultka/vaultka-smart-contracts",
     "name": "Vaultka Smart Contracts",
     "url": "https://hackenproof.com/vaultka/vaultka-smart-contracts",
@@ -8455,9 +8730,9 @@
     }
   },
   {
-    "id": "/status-dot-app/waku",
+    "id": "/ift/waku",
     "name": "Waku",
-    "url": "https://hackenproof.com/status-dot-app/waku",
+    "url": "https://hackenproof.com/ift/waku",
     "archived": false,
     "triaged_by_hackenproof": true,
     "targets": {
@@ -8658,93 +8933,114 @@
     "targets": {
       "in_scope": [
         {
-          "target": "https://explorer.hiro.so/txid/0xb053fe14c2fb94654185ce1376cd479b9c9e7888bb63fcdf2a84d1857a4a983a?chain=mainnet",
+          "target": "https://explorer.hiro.so/txid/0x880730838e1dbce955fade6a9a7e1a902a90bb4362fb006a4ba69326b69a04b6?chain=mainnet",
           "type": "Smart Contract",
-          "instruction": "Smart Contract - zststx",
+          "instruction": "Smart Contract - math",
           "severity": "Critical",
           "reward": "Bounty"
         },
         {
           "target": "https://explorer.hiro.so/txid/0xa5360acc52acfd48a0f9808fb093386c3e1fe94dc633c3db1f0a1a39235e2f3d?chain=mainnet",
           "type": "Smart Contract",
-          "instruction": "Smart Contract - zaeusdc",
+          "instruction": "Smart Contract - pool-reserve-data",
           "severity": "Critical",
           "reward": "Bounty"
         },
         {
           "target": "https://explorer.hiro.so/txid/0x5ae326829249e3af84327ddbd56e3c0a27935bf02796c24b403ead298fbb5802?chain=mainnet",
           "type": "Smart Contract",
-          "instruction": "Smart Contract - pool-borrow",
+          "instruction": "Smart Contract - pool-vault",
           "severity": "Critical",
           "reward": "Bounty"
         },
         {
-          "target": "https://explorer.hiro.so/txid/0xad360b87fdf5979eed34ab667111782e508ab356cb10cd2e363d2917ff9f6d43?chain=mainnet",
-          "type": "Smart Contract",
-          "instruction": "Smart Contract - liquidation-manager",
-          "severity": "Critical",
-          "reward": "Bounty"
-        },
-        {
-          "target": "https://explorer.hiro.so/txid/0xd118296436d1ae259fefdca8fbca2a6a866dda4de843ecec39b04ead030cc496?chain=mainnet",
+          "target": "https://explorer.hiro.so/txid/0xe180997599573e99e1bc9bd34b4e4625423825f8b2673d80b108f24e91df56a9?chain=mainnet",
           "type": "Smart Contract",
           "instruction": "Smart Contract - pool-0-reserve",
           "severity": "Critical",
           "reward": "Bounty"
         },
         {
-          "target": "https://explorer.hiro.so/txid/0x0a4d55f2da25fcfcd930f730bb7ec022189127fa756ad35d77b3d96402527153?chain=mainnet",
+          "target": "https://explorer.hiro.so/txid/0xe306d663ae61561ac73be9afa829981d2e5c179f277633f70396529571d70dca?chain=mainnet",
           "type": "Smart Contract",
-          "instruction": "Smart Contract - pool-vault",
+          "instruction": "Smart Contract - liquidation-manager",
+          "severity": "Critical",
+          "reward": "Bounty"
+        },
+        {
+          "target": "https://explorer.hiro.so/txid/0xf277cef6efa1a19f456ba2212c9cd29eee515de22d63d3958408ec34f8836082?chain=mainnet",
+          "type": "Smart Contract",
+          "instruction": "Smart Contract - pool-borrow",
           "severity": "Critical",
           "reward": "Bounty"
         },
         {
           "target": "https://explorer.hiro.so/txid/0xdaf1f64b49395f138c48e459ea7ffa12f99ff0e84439d65d259caeec9a1324cb?chain=mainnet",
           "type": "Smart Contract",
-          "instruction": "",
+          "instruction": "Smart Contract - wstx",
           "severity": "Critical",
           "reward": "Bounty"
         },
         {
-          "target": "https://explorer.hiro.so/txid/0x58e0072ea7b4e1f45962352e0b08973cd9bc50d25d323ba72bfa8c502d069f58?chain=mainnet",
+          "target": "https://explorer.hiro.so/txid/0xe1e3aad0ca846842f1e14c2c10f36e43688ccf71fad38f4b1807c1ac311c1600?chain=mainnet",
           "type": "Smart Contract",
-          "instruction": "",
+          "instruction": "Smart Contract - zwstx",
           "severity": "Critical",
           "reward": "Bounty"
         },
         {
-          "target": "https://explorer.hiro.so/txid/0xede645aa045babcccb4f83c3137258cabf738b935c15cf51e3d86f2ee4a30ba9?chain=mainnet",
+          "target": "https://explorer.hiro.so/txid/0x90185d9b5129402b47a3740e2b0e773e1595ae1f986f51f8d84a46ed889be473?chain=mainnet",
           "type": "Smart Contract",
-          "instruction": "",
+          "instruction": "Smart Contract - zststx",
           "severity": "Critical",
           "reward": "Bounty"
         },
         {
           "target": "https://explorer.hiro.so/txid/0xdedad04a85931136d03c27f13f4c264008426c887ae03452326f1814770adcb2?chain=mainnet",
           "type": "Smart Contract",
-          "instruction": "",
+          "instruction": "Smart Contract - stx oracle",
           "severity": "Critical",
           "reward": "Bounty"
         },
         {
-          "target": "https://explorer.hiro.so/txid/0xc1277a0d82bbb43cfc51631ae370da4af7f84b6e34066d5ca81aea82ef5836f3?chain=mainnet",
+          "target": "https://explorer.hiro.so/txid/0x4c730391bb6317f70daf291dd7181dc6412b0f25229a86569a0ab11daa5619a8?chain=mainnet",
           "type": "Smart Contract",
-          "instruction": "",
+          "instruction": "Smart Contract - ststx oracle",
           "severity": "Critical",
           "reward": "Bounty"
         },
         {
           "target": "https://explorer.hiro.so/txid/0x26c9789582a696463052b1c352d22d9887b4b7615fa98574cb04ae24c73acafe?chain=mainnet",
           "type": "Smart Contract",
-          "instruction": "",
+          "instruction": "Smart Contract - zaeusdc",
           "severity": "Critical",
           "reward": "Bounty"
         },
         {
-          "target": "https://explorer.hiro.so/txid/0x49d35013eb62cdcd168c38e20d006701f01fd08cefd577670ea8cbd7ffec8038?chain=mainnet",
+          "target": "https://explorer.hiro.so/txid/0x685cbaafbff988295c521060e9da42dea216f4bbc44d2d7f7c5f3bcec86a0cc3?chain=mainnet",
           "type": "Smart Contract",
-          "instruction": "",
+          "instruction": "Smart Contract  - borrow-helper",
+          "severity": "Critical",
+          "reward": "Bounty"
+        },
+        {
+          "target": "https://explorer.hiro.so/txid/0xd0fb7f07c2d1239bb6813a91923320e6dd19b50b4c9d4a55b1b34d77be6ebbf6?chain=mainnet",
+          "type": "Smart Contract",
+          "instruction": "Smart Contract  - pool-read-supply",
+          "severity": "Critical",
+          "reward": "Bounty"
+        },
+        {
+          "target": "https://explorer.hiro.so/txid/0x2082136b2c42d82346ca7fad2cc6631446bfa8fafbc4a59535d40c37c22b5a14?chain=mainnet",
+          "type": "Smart Contract",
+          "instruction": "Smart Contract  - pool-read",
+          "severity": "Critical",
+          "reward": "Bounty"
+        },
+        {
+          "target": "https://explorer.hiro.so/txid/0xc789b4738a1cd9f7f749340d5fab6b22c6840bd2172aef54bdcbb72f9f9b2600?chain=mainnet",
+          "type": "Smart Contract",
+          "instruction": "Smart Contract  - pool-reserve-data-1",
           "severity": "Critical",
           "reward": "Bounty"
         }
@@ -8870,7 +9166,7 @@
     "name": "bitcastle Web",
     "url": "https://hackenproof.com/bitcastle/bitcastle-web",
     "archived": false,
-    "triaged_by_hackenproof": false,
+    "triaged_by_hackenproof": true,
     "targets": {
       "in_scope": [
         {
